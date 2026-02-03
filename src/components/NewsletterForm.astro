@@ -52,18 +52,21 @@ const {
   )}
 
   {variant === 'compact' && (
-    <form class="newsletter-form-element flex flex-col sm:flex-row gap-3">
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        required
-        class="flex-1 px-4 py-2 rounded-lg border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all text-sm"
-      />
-      <button type="submit" class="btn btn-primary btn-sm whitespace-nowrap">
-        {buttonText}
-      </button>
-    </form>
+    <div>
+      <form class="newsletter-form-element flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          class="flex-1 px-4 py-2 rounded-lg border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all text-sm"
+        />
+        <button type="submit" class="btn btn-primary btn-sm whitespace-nowrap">
+          {buttonText}
+        </button>
+      </form>
+      <p class="form-message mt-3 text-sm text-center hidden"></p>
+    </div>
   )}
 
   {variant === 'default' && (
