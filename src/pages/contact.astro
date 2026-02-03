@@ -17,7 +17,7 @@ const breadcrumbs: BreadcrumbItem[] = [
   breadcrumbs={breadcrumbs}
 >
   <section class="section">
-    <div class="container-site max-w-4xl">
+    <div class="container-site max-w-5xl">
       <header class="text-center mb-12 scroll-animate">
         <h1 class="mb-4">Let's Talk</h1>
         <p class="text-xl text-gray-300">
@@ -25,32 +25,70 @@ const breadcrumbs: BreadcrumbItem[] = [
         </p>
       </header>
 
-      <div class="grid md:grid-cols-2 gap-12">
-        <!-- Calendly Embed / Booking -->
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Cal.com Inline Embed -->
         <div class="scroll-animate">
           <h2 class="mb-4">Book a Discovery Call</h2>
           <p class="text-gray-300 mb-6">
             15 minutes to discuss your situation and see if we're a good fit. No pitch—just honest advice about whether my services make sense for you.
           </p>
 
-          <!-- Cal.com Popup -->
-          <div class="glass-card rounded-xl p-8 text-center">
-            <p class="text-gray-300 mb-6">Click below to see available times and book directly.</p>
-            <button
-              data-cal-link="kady-dennis/discovery-call"
-              data-cal-namespace="discovery-call"
-              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-              class="btn btn-primary btn-lg"
-            >
-              Book a Call
-            </button>
+          <!-- Cal.com Inline Embed -->
+          <div class="glass-card rounded-xl overflow-hidden" style="min-height: 500px;">
+            <div
+              id="cal-inline-embed"
+              style="width:100%;height:100%;min-height:500px;overflow:auto;"
+            ></div>
           </div>
 
-          <!-- Cal.com element-click embed code -->
+          <!-- Cal.com inline embed script -->
           <script is:inline type="text/javascript">
-            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            (function (C, A, L) {
+              let p = function (a, ar) { a.q.push(ar); };
+              let d = C.document;
+              C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {};
+                  cal.q = cal.q || [];
+                  d.head.appendChild(d.createElement("script")).src = A;
+                  cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                  const api = function () { p(api, arguments); };
+                  const namespace = ar[1];
+                  api.q = api.q || [];
+                  if(typeof namespace === "string"){
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    p(cal.ns[namespace], ar);
+                    p(cal, ["initNamespace", namespace]);
+                  } else p(cal, ar);
+                  return;
+                }
+                p(cal, ar);
+              };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
+
             Cal("init", "discovery-call", {origin:"https://app.cal.com"});
-            Cal.ns["discovery-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+
+            Cal.ns["discovery-call"]("inline", {
+              elementOrSelector: "#cal-inline-embed",
+              calLink: "kady-dennis/discovery-call",
+              layout: "month_view",
+              config: {
+                theme: "dark"
+              }
+            });
+
+            Cal.ns["discovery-call"]("ui", {
+              theme: "dark",
+              styles: {
+                branding: { brandColor: "#06b6d4" }
+              },
+              hideEventTypeDetails: false,
+              layout: "month_view"
+            });
           </script>
         </div>
 
@@ -61,7 +99,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             Questions? Not sure which service is right? Just want to say hi? Drop me a note.
           </p>
 
-          <form action="#" method="POST" class="space-y-6">
+          <form id="contact-form" class="space-y-6">
             <div class="input-group">
               <label for="name" class="label">Name</label>
               <input
@@ -90,11 +128,11 @@ const breadcrumbs: BreadcrumbItem[] = [
               <label for="subject" class="label">What can I help you with?</label>
               <select id="subject" name="subject" class="input">
                 <option value="">Select an option...</option>
-                <option value="done-for-you">Done-For-You Systems</option>
-                <option value="vip-day">VIP Strategy Day</option>
-                <option value="audit">Workflow Audit</option>
-                <option value="templates">Templates & Resources</option>
-                <option value="other">Something else</option>
+                <option value="Done-For-You Systems">Done-For-You Systems</option>
+                <option value="VIP Strategy Day">VIP Strategy Day</option>
+                <option value="Workflow Audit">Workflow Audit</option>
+                <option value="Templates & Resources">Templates & Resources</option>
+                <option value="Other">Something else</option>
               </select>
             </div>
 
@@ -113,6 +151,8 @@ const breadcrumbs: BreadcrumbItem[] = [
             <button type="submit" class="btn btn-primary w-full">
               Send Message
             </button>
+
+            <p id="form-message" class="text-sm text-center hidden"></p>
           </form>
         </div>
       </div>
@@ -191,4 +231,66 @@ const breadcrumbs: BreadcrumbItem[] = [
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form') as HTMLFormElement;
+      const message = document.getElementById('form-message') as HTMLParagraphElement;
+
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const nameInput = form.querySelector('#name') as HTMLInputElement;
+        const emailInput = form.querySelector('#email') as HTMLInputElement;
+        const subjectSelect = form.querySelector('#subject') as HTMLSelectElement;
+        const messageInput = form.querySelector('#message') as HTMLTextAreaElement;
+        const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+        const name = nameInput?.value;
+        const email = emailInput?.value;
+        const subject = subjectSelect?.value;
+        const msgText = messageInput?.value;
+
+        if (!name || !email || !msgText) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+          const response = await fetch('/api/contact/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              email,
+              subject,
+              message: msgText
+            })
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            message.textContent = "Message sent! I'll get back to you within 24 hours.";
+            message.classList.remove('hidden', 'text-rose-400');
+            message.classList.add('text-accent-400');
+            form.reset();
+          } else {
+            message.textContent = result.error || 'Something went wrong. Please try again.';
+            message.classList.remove('hidden', 'text-accent-400');
+            message.classList.add('text-rose-400');
+          }
+        } catch (error) {
+          message.textContent = 'Something went wrong. Please try again.';
+          message.classList.remove('hidden', 'text-accent-400');
+          message.classList.add('text-rose-400');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+    });
+  </script>
 </PageLayout>
