@@ -85,13 +85,28 @@
   "social": [
     {
       "platform": "LinkedIn",
-      "url": "https://linkedin.com/in/kadydennis",
+      "url": "https://www.linkedin.com/in/kadydennis/",
       "icon": "linkedin"
     },
     {
-      "platform": "Facebook Community",
-      "url": "https://facebook.com/groups/travelagentworkflows",
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/kadydennistravel/",
       "icon": "facebook"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/kadyladytravels",
+      "icon": "instagram"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/@KadyDennisAI",
+      "icon": "youtube"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/kadydennis",
+      "icon": "x"
     }
   ],
   "cta": {
