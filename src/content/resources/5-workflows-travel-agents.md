@@ -10,8 +10,6 @@ downloadUrl: "#email-gate"
 ogImage: "/images/og-5-workflows.jpg"
 ---
 
-# The 5 Workflows Every Travel Agent Should Automate
-
 Stop reinventing the wheel. This guide shows you exactly which tasks to automate first—and how to do it without expensive software or a tech team. These five workflows represent the highest-impact automation opportunities for travel advisors, based on real agency implementations that save 10+ hours per week.
 
 ## Why These 5 Workflows?
