@@ -12,11 +12,17 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const API_SECRET = import.meta.env.CONVERTKIT_API_SECRET || process.env.CONVERTKIT_API_SECRET;
+    // Try multiple ways to get the env var
+    const API_SECRET = process.env.CONVERTKIT_API_SECRET
+      || import.meta.env.CONVERTKIT_API_SECRET
+      || (globalThis as any).process?.env?.CONVERTKIT_API_SECRET;
 
     if (!API_SECRET) {
-      console.error('CONVERTKIT_API_SECRET not configured');
-      return new Response(JSON.stringify({ error: 'Server configuration error' }), {
+      console.error('CONVERTKIT_API_SECRET not configured. Available env:', Object.keys(process.env || {}).filter(k => !k.startsWith('npm')).join(', '));
+      return new Response(JSON.stringify({
+        error: 'Server configuration error',
+        debug: 'API_SECRET not found'
+      }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
