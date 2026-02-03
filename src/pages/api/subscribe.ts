@@ -12,7 +12,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const API_SECRET = import.meta.env.CONVERTKIT_API_SECRET;
+    const API_SECRET = import.meta.env.CONVERTKIT_API_SECRET || process.env.CONVERTKIT_API_SECRET;
 
     if (!API_SECRET) {
       console.error('CONVERTKIT_API_SECRET not configured');
@@ -60,9 +60,9 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error('ConvertKit API error:', errorData);
-      return new Response(JSON.stringify({ error: 'Subscription failed' }), {
+      const errorText = await response.text();
+      console.error('ConvertKit API error:', response.status, errorText);
+      return new Response(JSON.stringify({ error: 'Subscription failed', details: errorText }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
