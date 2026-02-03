@@ -1,10 +1,28 @@
 ---
 import navigation from '../data/navigation.json';
+import NewsletterForm from './NewsletterForm.astro';
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-gray-50 border-t border-gray-100">
+  <!-- Newsletter Section -->
+  <div class="border-b border-gray-200">
+    <div class="container-site py-12">
+      <div class="max-w-2xl mx-auto text-center">
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Get AI Ops Tips Weekly</h3>
+        <p class="text-gray-600 mb-6">Join travel advisors getting actionable automation tips every week. No spam, just systems that save time.</p>
+        <div class="max-w-md mx-auto">
+          <NewsletterForm
+            variant="compact"
+            buttonText="Subscribe"
+          />
+          <p class="form-message mt-3 text-sm text-center hidden"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container-site section-sm">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
       <!-- Brand Column -->
