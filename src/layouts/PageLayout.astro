@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import type { BreadcrumbItem } from '../utils/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  ogType?: 'website' | 'article' | 'product';
+  ogImage?: string;
+  ogImageAlt?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+  tags?: string[];
+  breadcrumbs?: BreadcrumbItem[];
+  includeOrganization?: boolean;
+  includeWebsite?: boolean;
+  additionalSchemas?: object[];
+  showBreadcrumbs?: boolean;
+}
+
+const {
+  title,
+  description,
+  showBreadcrumbs = true,
+  breadcrumbs,
+  ...rest
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  breadcrumbs={breadcrumbs}
+  {...rest}
+>
+  <Header />
+
+  {showBreadcrumbs && breadcrumbs && breadcrumbs.length > 0 && (
+    <div class="container-site pt-4">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+  )}
+
+  <main id="main-content" class="flex-grow">
+    <slot />
+  </main>
+
+  <Footer />
+</BaseLayout>

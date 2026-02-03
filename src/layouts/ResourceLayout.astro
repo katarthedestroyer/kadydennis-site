@@ -1,0 +1,94 @@
+---
+import PageLayout from './PageLayout.astro';
+import LeadMagnetCTA from '../components/LeadMagnetCTA.astro';
+import { getArticleSchema, type BreadcrumbItem } from '../utils/schema';
+import { defaultSiteConfig } from '../utils/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  datePublished: string;
+  dateModified: string;
+  author: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  slug,
+  datePublished,
+  dateModified,
+  author,
+  ogImage
+} = Astro.props;
+
+const resourceUrl = `${defaultSiteConfig.siteUrl}/resources/${slug}/`;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Resources', url: `${defaultSiteConfig.siteUrl}/resources/` },
+  { name: title, url: resourceUrl }
+];
+
+const articleSchema = getArticleSchema({
+  url: resourceUrl,
+  title,
+  description,
+  datePublished,
+  dateModified,
+  image: ogImage ? `${defaultSiteConfig.siteUrl}${ogImage}` : undefined
+});
+
+const formattedPublishDate = new Date(datePublished).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const formattedModifiedDate = new Date(dateModified).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={breadcrumbs}
+  additionalSchemas={[articleSchema]}
+  ogType="article"
+  ogImage={ogImage}
+  publishedTime={datePublished}
+  modifiedTime={dateModified}
+  author={author}
+>
+  <article class="section">
+    <div class="container-site max-w-3xl">
+      <header class="mb-8">
+        <h1 class="mb-4">{title}</h1>
+        <div class="flex items-center gap-4 text-gray-500 text-sm">
+          <span>By {author}</span>
+          <span>|</span>
+          <time datetime={datePublished}>{formattedPublishDate}</time>
+          {dateModified !== datePublished && (
+            <>
+              <span>|</span>
+              <span>Updated: <time datetime={dateModified}>{formattedModifiedDate}</time></span>
+            </>
+          )}
+        </div>
+      </header>
+
+      <div class="prose-custom">
+        <slot />
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <LeadMagnetCTA variant="inline" />
+      </div>
+    </div>
+  </article>
+</PageLayout>

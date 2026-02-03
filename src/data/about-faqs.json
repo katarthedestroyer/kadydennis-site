@@ -1,0 +1,24 @@
+{
+  "aboutFaqs": [
+    {
+      "question": "Do you only work with travel agents?",
+      "answer": "Travel is my specialty, but I also work with service-based businesses—coaches, consultants, small agencies—who face similar operational challenges."
+    },
+    {
+      "question": "What tools do you use?",
+      "answer": "Primarily ClickUp for project management, Claude AI for intelligent automation, and custom integrations. I recommend tools based on your specific needs, not what pays me the highest affiliate commission."
+    },
+    {
+      "question": "Do I need to be tech-savvy to work with you?",
+      "answer": "No. I build systems for people who don't want to think about technology. You'll get training and documentation, and the goal is always simplicity."
+    },
+    {
+      "question": "Where are you based?",
+      "answer": "I work remotely with clients worldwide. Most of my clients are in the US, but I've worked with agencies in Canada, UK, and Australia."
+    },
+    {
+      "question": "How did you get into this?",
+      "answer": "I spent years as a travel coordinator building the systems that nobody else wanted to build. Eventually I realized the systems were more valuable than any single trip I could book."
+    }
+  ]
+}

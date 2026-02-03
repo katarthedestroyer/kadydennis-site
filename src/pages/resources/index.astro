@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import LeadMagnetCTA from '../../components/LeadMagnetCTA.astro';
+import { pagesSEO, defaultSiteConfig } from '../../utils/seo';
+import type { BreadcrumbItem } from '../../utils/schema';
+
+const seo = pagesSEO.resources;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Resources', url: `${defaultSiteConfig.siteUrl}/resources/` }
+];
+
+const resources = await getCollection('resources');
+const sortedResources = resources.sort((a, b) =>
+  new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime()
+);
+
+const featuredResources = sortedResources.filter(r => r.data.featured);
+const allResources = sortedResources;
+---
+
+<PageLayout
+  title={seo.title!}
+  description={seo.description!}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container-site">
+      <header class="max-w-3xl mx-auto text-center mb-16">
+        <h1 class="mb-4">Free Resources</h1>
+        <p class="text-xl text-gray-600">
+          Free guides and resources for travel agents looking to automate their operations and use AI effectively.
+        </p>
+      </header>
+
+      <!-- Featured Resource -->
+      {featuredResources.length > 0 && (
+        <div class="mb-16">
+          <LeadMagnetCTA
+            variant="card"
+            title={featuredResources[0].data.title}
+            description={featuredResources[0].data.description}
+          />
+        </div>
+      )}
+
+      <!-- All Resources -->
+      <div>
+        <h2 class="mb-8">All Guides</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {allResources.map((resource) => (
+            <article class="card group">
+              <span class="badge badge-brand mb-4">Free Guide</span>
+              <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">
+                <a href={`/resources/${resource.data.slug}/`}>
+                  {resource.data.title}
+                </a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">{resource.data.description}</p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>By {resource.data.author}</span>
+                <time datetime={resource.data.datePublished}>
+                  {new Date(resource.data.datePublished).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
+                </time>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA to Templates -->
+      <div class="mt-16 text-center max-w-2xl mx-auto">
+        <h2 class="mb-4">Ready for More?</h2>
+        <p class="text-gray-600 mb-6">
+          Check out my premium templates and tools, or explore services if you want hands-on help.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/shop/" class="btn btn-primary">
+            View Templates
+          </a>
+          <a href="/services/" class="btn btn-secondary">
+            View Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

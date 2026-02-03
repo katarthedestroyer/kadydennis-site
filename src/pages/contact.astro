@@ -1,0 +1,156 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pagesSEO, defaultSiteConfig } from '../utils/seo';
+import type { BreadcrumbItem } from '../utils/schema';
+
+const seo = pagesSEO.contact;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Contact', url: `${defaultSiteConfig.siteUrl}/contact/` }
+];
+---
+
+<PageLayout
+  title={seo.title!}
+  description={seo.description!}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container-site max-w-4xl">
+      <header class="text-center mb-12">
+        <h1 class="mb-4">Let's Talk</h1>
+        <p class="text-xl text-gray-600">
+          Ready to fix your operations? Book a free discovery call or send a message. I respond within 24 hours.
+        </p>
+      </header>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Calendly Embed / Booking -->
+        <div>
+          <h2 class="mb-4">Book a Discovery Call</h2>
+          <p class="text-gray-600 mb-6">
+            15 minutes to discuss your situation and see if we're a good fit. No pitch—just honest advice about whether my services make sense for you.
+          </p>
+
+          <!-- Calendly Embed Placeholder -->
+          <div class="bg-gray-100 rounded-xl p-8 text-center min-h-[400px] flex items-center justify-center">
+            <div>
+              <p class="text-gray-500 mb-4">Calendly embed will go here</p>
+              <a
+                href="https://calendly.com/kadydennis"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                Book on Calendly
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="mb-4">Send a Message</h2>
+          <p class="text-gray-600 mb-6">
+            Questions? Not sure which service is right? Just want to say hi? Drop me a note.
+          </p>
+
+          <form action="#" method="POST" class="space-y-6">
+            <div class="input-group">
+              <label for="name" class="label">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="input"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="email" class="label">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="input"
+                placeholder="your@email.com"
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="subject" class="label">What can I help you with?</label>
+              <select id="subject" name="subject" class="input">
+                <option value="">Select an option...</option>
+                <option value="done-for-you">Done-For-You Systems</option>
+                <option value="vip-day">VIP Strategy Day</option>
+                <option value="audit">Workflow Audit</option>
+                <option value="templates">Templates & Resources</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="message" class="label">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="input"
+                placeholder="Tell me a bit about your situation..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Alternative Contact -->
+      <div class="mt-16 text-center">
+        <h2 class="mb-4">Prefer Email?</h2>
+        <p class="text-gray-600 mb-4">
+          You can reach me directly at:
+        </p>
+        <a
+          href="mailto:kady@kadydennis.com"
+          class="text-2xl font-medium text-brand-600 hover:text-brand-700"
+        >
+          kady@kadydennis.com
+        </a>
+
+        <!-- Social Links -->
+        <div class="mt-8 flex justify-center gap-6">
+          <a
+            href="https://linkedin.com/in/kadydennis"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-brand-600 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a
+            href="https://facebook.com/groups/travelagentworkflows"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-brand-600 transition-colors"
+            aria-label="Facebook Community"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

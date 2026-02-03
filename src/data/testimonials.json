@@ -1,0 +1,57 @@
+{
+  "testimonials": [
+    {
+      "id": "virtuoso-agency",
+      "quote": "Kady helped us realize we were leaving money on the table with every Virtuoso referral. The system she built paid for itself in the first month.",
+      "author": "Travel Agency Owner",
+      "company": null,
+      "service": "done-for-you-systems",
+      "result": "$1M+ untracked revenue identified",
+      "featured": true
+    },
+    {
+      "id": "time-savings",
+      "quote": "I was spending 15 hours a week on admin tasks that should have been automated years ago. Now my systems run themselves and I actually have time to grow my business.",
+      "author": "Solo Travel Advisor",
+      "company": null,
+      "service": "done-for-you-systems",
+      "result": "10+ hours/week saved",
+      "featured": true
+    },
+    {
+      "id": "vip-day-clarity",
+      "quote": "After one VIP day, I finally understood why everything felt so chaotic. The 90-day plan gave me exactly what I needed to stop spinning my wheels.",
+      "author": "Luxury Travel Specialist",
+      "company": null,
+      "service": "vip-strategy-day",
+      "result": "Complete workflow clarity",
+      "featured": false
+    },
+    {
+      "id": "audit-confidence",
+      "quote": "I was convinced my systems were a disaster. Kady's audit showed me what was actually working and gave me a clear priority list. Best $500 I've spent.",
+      "author": "Boutique Agency Owner",
+      "company": null,
+      "service": "workflow-audit",
+      "result": "Prioritized action plan",
+      "featured": false
+    }
+  ],
+  "stats": [
+    {
+      "value": "$1M+",
+      "label": "in previously untracked revenue identified for one agency through workflow audit",
+      "context": "revenue"
+    },
+    {
+      "value": "10+",
+      "label": "hours/week saved on average for advisors using my systems",
+      "context": "time"
+    },
+    {
+      "value": "218",
+      "label": "travel agents learning workflows in my free community",
+      "context": "community"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "mainNav": [
+    {
+      "label": "Services",
+      "href": "/services/",
+      "children": [
+        {
+          "label": "Done-For-You Systems",
+          "href": "/services/done-for-you-systems/",
+          "description": "Complete operations build"
+        },
+        {
+          "label": "VIP Strategy Day",
+          "href": "/services/vip-strategy-day/",
+          "description": "One-day intensive"
+        },
+        {
+          "label": "Workflow Audit",
+          "href": "/services/workflow-audit/",
+          "description": "Operations review"
+        }
+      ]
+    },
+    {
+      "label": "Resources",
+      "href": "/shop/",
+      "children": null
+    },
+    {
+      "label": "Community",
+      "href": "/community/",
+      "children": null
+    },
+    {
+      "label": "About",
+      "href": "/about/",
+      "children": null
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/",
+      "children": null
+    }
+  ],
+  "footerNav": {
+    "services": [
+      {
+        "label": "Done-For-You Systems",
+        "href": "/services/done-for-you-systems/"
+      },
+      {
+        "label": "VIP Strategy Day",
+        "href": "/services/vip-strategy-day/"
+      },
+      {
+        "label": "Workflow Audit",
+        "href": "/services/workflow-audit/"
+      }
+    ],
+    "resources": [
+      {
+        "label": "Templates & Tools",
+        "href": "/shop/"
+      },
+      {
+        "label": "Free Guides",
+        "href": "/resources/"
+      },
+      {
+        "label": "Community",
+        "href": "/community/"
+      }
+    ],
+    "company": [
+      {
+        "label": "About Kady",
+        "href": "/about/"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact/"
+      }
+    ]
+  },
+  "social": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/kadydennis",
+      "icon": "linkedin"
+    },
+    {
+      "platform": "Facebook Community",
+      "url": "https://facebook.com/groups/travelagentworkflows",
+      "icon": "facebook"
+    }
+  ],
+  "cta": {
+    "primary": {
+      "label": "Book a Call",
+      "href": "/contact/"
+    },
+    "secondary": {
+      "label": "Get Free Guide",
+      "href": "/resources/5-workflows-travel-agents/"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "products": [
+    {
+      "id": "5-workflows-guide",
+      "title": "The 5 Workflows Every Travel Agent Should Automate",
+      "description": "Your starting point. Learn which tasks to automate first—and how.",
+      "price": 0,
+      "priceDisplay": "Free",
+      "isFree": true,
+      "category": "guide",
+      "href": "/resources/5-workflows-travel-agents/",
+      "gumroadUrl": null,
+      "emailGated": true,
+      "icon": "📘",
+      "featured": true,
+      "tags": ["automation", "getting-started", "workflows"]
+    },
+    {
+      "id": "clickup-starter-portal",
+      "title": "ClickUp Travel Agency Starter Portal",
+      "description": "Complete ClickUp workspace template built for travel advisors. Includes: client pipeline, booking tracker, supplier database, and task templates.",
+      "price": 97,
+      "priceDisplay": "$97",
+      "isFree": false,
+      "category": "template",
+      "href": null,
+      "gumroadUrl": "https://gumroad.com/l/placeholder-clickup-portal",
+      "emailGated": false,
+      "icon": "🗂️",
+      "featured": true,
+      "tags": ["clickup", "template", "workspace"]
+    },
+    {
+      "id": "commission-tracking",
+      "title": "Commission Tracking Template",
+      "description": "Stop losing money. Track every booking, supplier payment, and commission split in one place.",
+      "price": 67,
+      "priceDisplay": "$67",
+      "isFree": false,
+      "category": "template",
+      "href": null,
+      "gumroadUrl": "https://gumroad.com/l/placeholder-commission-tracking",
+      "emailGated": false,
+      "icon": "💰",
+      "featured": true,
+      "tags": ["commission", "tracking", "finance"]
+    },
+    {
+      "id": "client-intake-workflow",
+      "title": "Client Intake & Trip Planning Workflow",
+      "description": "Automated intake form → trip profile → task generation. Never miss a detail.",
+      "price": 47,
+      "priceDisplay": "$47",
+      "isFree": false,
+      "category": "template",
+      "href": null,
+      "gumroadUrl": "https://gumroad.com/l/placeholder-client-intake",
+      "emailGated": false,
+      "icon": "📝",
+      "featured": false,
+      "tags": ["intake", "planning", "automation"]
+    },
+    {
+      "id": "ai-prompt-pack",
+      "title": "AI Prompt Pack for Travel Agents",
+      "description": "50+ tested prompts for client emails, itinerary drafts, supplier communication, and more. Works with ChatGPT or Claude.",
+      "price": 37,
+      "priceDisplay": "$37",
+      "isFree": false,
+      "category": "tool",
+      "href": null,
+      "gumroadUrl": "https://gumroad.com/l/placeholder-ai-prompts",
+      "emailGated": false,
+      "icon": "🤖",
+      "featured": true,
+      "tags": ["ai", "prompts", "chatgpt", "claude"]
+    }
+  ],
+  "comingSoon": [
+    {
+      "id": "ai-bootcamp",
+      "title": "AI Operations Bootcamp for Travel Agents",
+      "description": "Video course teaching you to implement AI across your entire operation.",
+      "type": "course",
+      "waitlistUrl": "#waitlist"
+    },
+    {
+      "id": "clickup-masterclass",
+      "title": "Advanced ClickUp Masterclass",
+      "description": "Deep dive into ClickUp automations, dashboards, and advanced features for travel agencies.",
+      "type": "course",
+      "waitlistUrl": "#waitlist"
+    },
+    {
+      "id": "workflow-library",
+      "title": "Workflow Map Library",
+      "description": "Visual workflow maps for every common travel agency process.",
+      "type": "library",
+      "waitlistUrl": "#waitlist"
+    }
+  ]
+}

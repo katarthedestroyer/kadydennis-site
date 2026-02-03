@@ -1,0 +1,101 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import LeadMagnetCTA from '../components/LeadMagnetCTA.astro';
+import { pagesSEO, defaultSiteConfig } from '../utils/seo';
+import { getProductSchema, type BreadcrumbItem } from '../utils/schema';
+
+import productsData from '../data/products.json';
+
+const seo = pagesSEO.shop;
+const products = productsData.products;
+const comingSoon = productsData.comingSoon;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Resources & Templates', url: `${defaultSiteConfig.siteUrl}/shop/` }
+];
+
+// Generate product schemas for paid products
+const productSchemas = products
+  .filter(p => !p.isFree)
+  .map(p => getProductSchema({
+    name: p.title,
+    description: p.description,
+    url: p.gumroadUrl || `${defaultSiteConfig.siteUrl}/shop/`,
+    price: p.price,
+    availability: 'InStock'
+  }));
+---
+
+<PageLayout
+  title={seo.title!}
+  description={seo.description!}
+  breadcrumbs={breadcrumbs}
+  additionalSchemas={productSchemas}
+>
+  <section class="section">
+    <div class="container-site">
+      <header class="max-w-3xl mx-auto text-center mb-16">
+        <h1 class="mb-4">Resources & Templates</h1>
+        <p class="text-xl text-gray-600">
+          ClickUp templates, workflow guides, and AI prompt packs built specifically for travel agents. Grab what you need and start using it today.
+        </p>
+      </header>
+
+      <!-- Free Resource (Featured) -->
+      <div class="mb-16">
+        <LeadMagnetCTA variant="card" />
+      </div>
+
+      <!-- Paid Products -->
+      <div class="mb-16">
+        <h2 class="mb-8">Templates & Tools</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.filter(p => !p.isFree).map((product) => (
+            <ProductCard
+              title={product.title}
+              description={product.description}
+              price={product.priceDisplay}
+              href={product.href}
+              gumroadUrl={product.gumroadUrl}
+              isFree={product.isFree}
+              icon={product.icon}
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="bg-gray-50 rounded-2xl p-8 md:p-12">
+        <h2 class="mb-4">Coming Soon</h2>
+        <p class="text-gray-600 mb-8">
+          More resources in development. Join the waitlist to get notified when they launch.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {comingSoon.map((item) => (
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <span class="badge badge-gray mb-3">{item.type}</span>
+              <h3 class="font-bold text-gray-900 mb-2">{item.title}</h3>
+              <p class="text-gray-600 text-sm mb-4">{item.description}</p>
+              <a href={item.waitlistUrl} class="text-brand-600 hover:text-brand-700 font-medium text-sm">
+                Join Waitlist →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Note about custom work -->
+      <div class="mt-16 text-center max-w-2xl mx-auto">
+        <h2 class="mb-4">Need Something Custom?</h2>
+        <p class="text-gray-600 mb-6">
+          Templates get you started, but sometimes you need a solution built specifically for your business. Check out my <a href="/services/" class="text-brand-600 hover:text-brand-700 font-medium">done-for-you services</a> for custom implementations.
+        </p>
+        <a href="/services/" class="btn btn-secondary">
+          View Services
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

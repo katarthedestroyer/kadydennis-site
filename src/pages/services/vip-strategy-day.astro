@@ -1,0 +1,125 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import servicesData from '../../data/services.json';
+
+const service = servicesData.services.find(s => s.id === 'vip-strategy-day')!;
+---
+
+<ServiceLayout
+  title={service.title}
+  description={service.fullDescription}
+  serviceId={service.id}
+  priceRange={service.priceRange}
+  faqs={service.faqs}
+  ctaText={service.ctaText}
+  ctaHref={service.ctaHref}
+>
+  <!-- Hero with Direct Answer (50-70 words) -->
+  <header class="mb-12">
+    <span class="badge badge-brand mb-4">{service.priceRange}</span>
+    <h1 class="mb-4">{service.title}</h1>
+    <p class="text-xl text-gray-600">
+      A VIP Strategy Day is a one-day intensive where we map your entire operation and build a clear 90-day action plan. In 4 focused hours, we identify bottlenecks, design solutions, and prioritize what to fix first. You leave with a recorded session, documented workflows, and a roadmap you can implement immediately.
+    </p>
+  </header>
+
+  <!-- What's Included -->
+  <section class="mb-12">
+    <h2 class="mb-6">What's Included</h2>
+    <ul class="space-y-4">
+      {service.included.map((item) => (
+        <li class="flex items-start gap-3">
+          <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span class="text-gray-700">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="mb-12 bg-gray-50 rounded-2xl p-8">
+    <h2 class="mb-4">Who This Is For</h2>
+    <p class="text-gray-700 mb-4">
+      A VIP Strategy Day is perfect if you:
+    </p>
+    <ul class="space-y-3 text-gray-700">
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>Know something's broken but can't pinpoint exactly what</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>Want a clear roadmap before investing in a larger engagement</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>Prefer to implement changes yourself but need expert guidance</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>Are ready to level up but not sure where to start</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Process -->
+  <section class="mb-12">
+    <h2 class="mb-8">How It Works</h2>
+    <div class="space-y-8">
+      {service.process.map((phase, index) => (
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold">
+              {index + 1}
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{phase.phase}</h3>
+            <p class="text-gray-600">{phase.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- What You Leave With -->
+  <section class="mb-12 bg-brand-50 rounded-2xl p-8 border border-brand-100">
+    <h2 class="mb-6">What You Leave With</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="font-bold text-gray-900 mb-2">Documented Workflows</h3>
+        <p class="text-gray-600 text-sm">Visual maps of your top 3 processes with recommended improvements annotated.</p>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900 mb-2">90-Day Action Plan</h3>
+        <p class="text-gray-600 text-sm">Prioritized list of changes with specific next steps you can implement immediately.</p>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900 mb-2">Session Recording</h3>
+        <p class="text-gray-600 text-sm">Full recording of our intensive so you can reference our discussions anytime.</p>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900 mb-2">Follow-Up Support</h3>
+        <p class="text-gray-600 text-sm">14 days of email support for questions that come up as you start implementing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upgrade Path -->
+  <section class="mb-12">
+    <h2 class="mb-4">Want Me to Implement It?</h2>
+    <p class="text-gray-600">
+      Many VIP Day clients decide they want me to build the system rather than implement it themselves. If you choose to move to <a href="/services/done-for-you-systems/" class="text-brand-600 hover:text-brand-700 font-medium">Done-For-You Systems</a> within 60 days of your VIP Day, your full $2,500 investment is credited toward the larger engagement.
+    </p>
+  </section>
+</ServiceLayout>

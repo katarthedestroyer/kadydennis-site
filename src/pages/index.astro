@@ -1,17 +1,195 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import LeadMagnetCTA from '../components/LeadMagnetCTA.astro';
+import { pagesSEO } from '../utils/seo';
+import { getOrganizationSchema, getWebSiteSchema, getPersonSchema } from '../utils/schema';
 
+import servicesData from '../data/services.json';
+import testimonialsData from '../data/testimonials.json';
+
+const seo = pagesSEO.home;
+const services = servicesData.services;
+const testimonials = testimonialsData.testimonials.filter(t => t.featured);
+const stats = testimonialsData.stats;
+
+const additionalSchemas = [
+  getOrganizationSchema(),
+  getWebSiteSchema(),
+  getPersonSchema()
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title={seo.title!}
+  description={seo.description!}
+  includeOrganization={true}
+  includeWebsite={true}
+  additionalSchemas={additionalSchemas}
+>
+  <Header />
+
+  <main id="main-content" class="flex-grow">
+    <!-- Hero Section -->
+    <section class="section bg-gradient-to-b from-gray-50 to-white">
+      <div class="container-site">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-balance mb-6">
+            AI-Powered Systems for Travel Agents & Small Teams
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 text-balance">
+            You didn't start your business to drown in spreadsheets, chase commission payments, or copy-paste the same emails over and over. I build operations systems that run while you sleep—so you can focus on clients, not admin.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/resources/5-workflows-travel-agents/" class="btn btn-primary btn-lg">
+              Get the Free Workflow Guide
+            </a>
+            <a href="/services/" class="btn btn-secondary btn-lg">
+              See How I Can Help
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section">
+      <div class="container-site">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-center mb-8">Sound familiar?</h2>
+          <ul class="space-y-4 text-lg text-gray-600 mb-8">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>You spend more time on admin than actually talking to clients</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>You're not 100% sure you're getting paid every commission you're owed</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>Your "system" is a mix of sticky notes, spreadsheets, and things you just remember</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>You know you should automate but don't know where to start</span>
+            </li>
+          </ul>
+          <p class="text-lg text-gray-700 text-center">
+            You're not bad at operations. You just don't have the <strong>systems</strong> to make it easy.
+            I build those systems for travel advisors and small service businesses—so you can stop reinventing the wheel and start scaling.
+          </p>
+          <div class="text-center mt-8">
+            <a href="/services/" class="btn btn-ghost">
+              See How I Can Help →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section bg-gray-50">
+      <div class="container-site">
+        <h2 class="text-center mb-4">Choose Your Path</h2>
+        <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">
+          Whether you want me to build everything for you or just need a push in the right direction, there's an option that fits.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {services.map((service) => (
+            <ServiceCard
+              icon={service.icon}
+              title={service.title}
+              description={service.shortDescription}
+              price={service.priceRange}
+              href={service.href}
+              bestFor={service.bestFor}
+              timeline={service.timeline}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="section">
+      <div class="container-site">
+        <h2 class="text-center mb-12">The Results</h2>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-8 mb-16 max-w-3xl mx-auto">
+          {stats.map((stat) => (
+            <div class="stat">
+              <div class="stat-value">{stat.value}</div>
+              <p class="stat-label text-sm">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Featured Testimonial -->
+        <div class="max-w-2xl mx-auto">
+          {testimonials[0] && (
+            <TestimonialCard
+              quote={testimonials[0].quote}
+              author={testimonials[0].author}
+              company={testimonials[0].company}
+              result={testimonials[0].result}
+            />
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- About Teaser -->
+    <section class="section bg-gray-50">
+      <div class="container-site">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="mb-6">Hey, I'm Kady.</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            I spent years as a travel coordinator building systems that nobody else wanted to build. Booking workflows, commission tracking, client communication sequences—all the stuff that makes agencies actually run.
+          </p>
+          <p class="text-lg text-gray-600 mb-8">
+            Eventually I realized: these systems were more valuable than any single trip I could book. Now I build them for travel advisors and small service businesses who want to stop drowning in operations and start scaling.
+          </p>
+          <a href="/about/" class="btn btn-ghost">
+            More About Me →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section class="section">
+      <div class="container-site">
+        <LeadMagnetCTA variant="card" />
+      </div>
+    </section>
+
+    <!-- Community CTA -->
+    <section class="section-sm bg-brand-600 text-white">
+      <div class="container-site text-center">
+        <h2 class="text-white mb-4">Join 218+ Travel Agents in the Workflow Community</h2>
+        <p class="text-white/90 mb-8 max-w-xl mx-auto">
+          Free Facebook group with weekly tips, Q&As, and first access to new resources. No pitch fests—just practical workflow help.
+        </p>
+        <a href="https://facebook.com/groups/travelagentworkflows" target="_blank" rel="noopener noreferrer" class="btn bg-white text-brand-700 hover:bg-gray-100 btn-lg">
+          Join Free →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { pagesSEO, defaultSiteConfig } from '../../utils/seo';
+import type { BreadcrumbItem } from '../../utils/schema';
+
+import servicesData from '../../data/services.json';
+
+const seo = pagesSEO.services;
+const services = servicesData.services;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Services', url: `${defaultSiteConfig.siteUrl}/services/` }
+];
+---
+
+<PageLayout
+  title={seo.title!}
+  description={seo.description!}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container-site">
+      <header class="max-w-3xl mx-auto text-center mb-16">
+        <h1 class="mb-4">Services</h1>
+        <p class="text-xl text-gray-600">
+          Systems that run while you sleep. Choose how you want to work together—from a quick audit to a complete operations build.
+        </p>
+      </header>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {services.map((service) => (
+          <ServiceCard
+            icon={service.icon}
+            title={service.title}
+            description={service.fullDescription}
+            price={service.priceRange}
+            href={service.href}
+            bestFor={service.bestFor}
+            timeline={service.timeline}
+          />
+        ))}
+      </div>
+
+      <!-- Comparison Note -->
+      <div class="mt-16 max-w-2xl mx-auto text-center">
+        <p class="text-gray-600">
+          Not sure which option is right for you? <a href="/contact/" class="text-brand-600 hover:text-brand-700 font-medium">Book a free 15-minute call</a> and I'll help you figure it out—no sales pitch, just honest advice.
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

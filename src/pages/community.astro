@@ -1,0 +1,103 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pagesSEO, defaultSiteConfig } from '../utils/seo';
+import type { BreadcrumbItem } from '../utils/schema';
+
+const seo = pagesSEO.community;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Community', url: `${defaultSiteConfig.siteUrl}/community/` }
+];
+---
+
+<PageLayout
+  title={seo.title!}
+  description={seo.description!}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container-site max-w-3xl">
+      <header class="text-center mb-12">
+        <span class="badge badge-brand mb-4">Free to Join</span>
+        <h1 class="mb-4">Travel Agent Workflows Community</h1>
+        <p class="text-xl text-gray-600">
+          Join 218+ travel agents learning workflows, automation, and AI tools. Free Facebook group with weekly tips, Q&As, and first access to new resources.
+        </p>
+      </header>
+
+      <!-- Benefits -->
+      <div class="bg-gray-50 rounded-2xl p-8 mb-12">
+        <h2 class="mb-6">What You Get</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <span class="font-medium text-gray-900">Weekly Workflow Tips</span>
+              <p class="text-gray-600 text-sm">Practical automation ideas you can implement in your agency today.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <span class="font-medium text-gray-900">Q&A Sessions</span>
+              <p class="text-gray-600 text-sm">Get answers to your specific workflow and tech questions.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <span class="font-medium text-gray-900">First Access to Resources</span>
+              <p class="text-gray-600 text-sm">Community members get early access to new templates and guides.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <span class="font-medium text-gray-900">Peer Support</span>
+              <p class="text-gray-600 text-sm">Connect with other travel professionals who are figuring out the same things you are.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- What It's Not -->
+      <div class="mb-12">
+        <h2 class="mb-4">What This Isn't</h2>
+        <p class="text-gray-600 mb-4">
+          This isn't a pitch-fest or a group where you'll get bombarded with sales messages. It's a genuine community of travel professionals helping each other work smarter. I share what I know, answer questions, and occasionally mention my services—but that's not the focus.
+        </p>
+        <p class="text-gray-600">
+          If you're tired of Facebook groups that are 90% self-promotion and 10% value, this one's different.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center bg-brand-600 text-white rounded-2xl p-8 md:p-12">
+        <h2 class="text-white mb-4">Ready to Join?</h2>
+        <p class="text-white/90 mb-8">
+          Click below to request access. I approve requests personally (usually within 24 hours) to keep the group spam-free.
+        </p>
+        <a
+          href="https://facebook.com/groups/travelagentworkflows"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn bg-white text-brand-700 hover:bg-gray-100 btn-lg"
+        >
+          Join the Community
+        </a>
+        <p class="text-white/70 text-sm mt-4">
+          Free • 218+ members • Facebook Group
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,70 @@
+---
+import PageLayout from './PageLayout.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import { getServiceSchema, getFAQPageSchema, type FAQItem, type BreadcrumbItem } from '../utils/schema';
+import { defaultSiteConfig } from '../utils/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  serviceId: string;
+  priceRange: string;
+  faqs: FAQItem[];
+  ctaText?: string;
+  ctaHref?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  serviceId,
+  priceRange,
+  faqs,
+  ctaText = "Book a Discovery Call",
+  ctaHref = "/contact/",
+  ogImage
+} = Astro.props;
+
+const serviceUrl = `${defaultSiteConfig.siteUrl}/services/${serviceId}/`;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Services', url: `${defaultSiteConfig.siteUrl}/services/` },
+  { name: title, url: serviceUrl }
+];
+
+const serviceSchema = getServiceSchema({
+  name: title,
+  description,
+  url: serviceUrl,
+  priceRange,
+  audienceType: 'Travel Advisors, Small Business Owners'
+});
+
+const faqSchema = getFAQPageSchema(faqs);
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={breadcrumbs}
+  additionalSchemas={[serviceSchema, faqSchema]}
+  ogImage={ogImage}
+>
+  <article class="section">
+    <div class="container-site">
+      <slot />
+
+      <FAQSection faqs={faqs} />
+
+      <CTASection
+        headline="Ready to Transform Your Operations?"
+        subheadline="Book a free discovery call to discuss your needs and see if we're a good fit."
+        buttonText={ctaText}
+        buttonHref={ctaHref}
+      />
+    </div>
+  </article>
+</PageLayout>

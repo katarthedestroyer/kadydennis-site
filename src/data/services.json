@@ -1,0 +1,205 @@
+{
+  "services": [
+    {
+      "id": "done-for-you-systems",
+      "icon": "🛠️",
+      "title": "Done-For-You Systems",
+      "shortDescription": "I build it. You use it. Full operations setup—ClickUp, automations, client workflows—delivered turnkey.",
+      "fullDescription": "Complete operations infrastructure built for you. ClickUp setup, automated workflows, commission tracking—delivered turnkey in 4-6 weeks.",
+      "bestFor": "Advisors booking $500K+ who need to stop doing everything manually.",
+      "priceRange": "$5,000 – $15,000",
+      "priceMin": 5000,
+      "priceMax": 15000,
+      "timeline": "4-6 weeks",
+      "href": "/services/done-for-you-systems/",
+      "included": [
+        "Full discovery of your current workflows and pain points",
+        "Custom ClickUp workspace setup (or optimization of existing)",
+        "Automated workflows for booking, client communication, and tracking",
+        "Commission tracking system with reporting",
+        "Team training and documentation",
+        "30 days of support after launch"
+      ],
+      "process": [
+        {
+          "week": "1-2",
+          "title": "Discovery",
+          "description": "We audit your current systems, identify bottlenecks, and map your ideal workflows. You'll fill out a detailed questionnaire and we'll have a 90-minute discovery call."
+        },
+        {
+          "week": "2-4",
+          "title": "Build",
+          "description": "I build your custom system—ClickUp workspace, automations, templates, dashboards. You'll see progress updates and have opportunities for feedback."
+        },
+        {
+          "week": "4-5",
+          "title": "Training",
+          "description": "Live training sessions for you and your team. Recorded for future reference. We walk through every workflow until you're confident."
+        },
+        {
+          "week": "5-6",
+          "title": "Launch + Support",
+          "description": "Go live with your new system. I'm available for questions, adjustments, and troubleshooting for 30 days post-launch."
+        }
+      ],
+      "pricingTiers": [
+        {
+          "tier": "Solo advisor with straightforward needs",
+          "price": "$5,000-7,000"
+        },
+        {
+          "tier": "Small team (2-5 people) with multiple workflows",
+          "price": "$8,000-12,000"
+        },
+        {
+          "tier": "Complex operations or custom integrations",
+          "price": "$12,000-15,000"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How long does the full build take?",
+          "answer": "Typically 4-6 weeks from kickoff to launch. Complex projects may take 8 weeks."
+        },
+        {
+          "question": "Do I need to use ClickUp?",
+          "answer": "ClickUp is my primary recommendation for travel operations, but I can work with other tools if you have strong preferences or existing investments."
+        },
+        {
+          "question": "What if I already have some systems in place?",
+          "answer": "Great—we'll audit what's working and build from there. No need to start completely from scratch."
+        },
+        {
+          "question": "Can you work with my existing team?",
+          "answer": "Yes. Training is included for up to 5 team members. Additional team members can be added for a fee."
+        },
+        {
+          "question": "What happens after the 30-day support period?",
+          "answer": "You'll have full documentation and training recordings. If you want ongoing support, I offer monthly retainer packages."
+        },
+        {
+          "question": "Do you guarantee results?",
+          "answer": "I guarantee you'll have a functioning, documented system that does what we agreed it would do. Specific business results depend on your implementation and consistency."
+        }
+      ],
+      "ctaText": "Book a Discovery Call",
+      "ctaHref": "/contact/"
+    },
+    {
+      "id": "vip-strategy-day",
+      "icon": "⚡",
+      "title": "VIP Strategy Day",
+      "shortDescription": "One day. Complete clarity. We map your workflows, identify the bottlenecks, and build your 90-day action plan.",
+      "fullDescription": "One intensive day to get complete clarity on your operations. Workflow mapping, bottleneck identification, and a 90-day action plan—delivered in a single focused session.",
+      "bestFor": "Advisors ready to level up but not sure where to start.",
+      "priceRange": "$2,500",
+      "priceMin": 2500,
+      "priceMax": 2500,
+      "timeline": "1 day (4 hours)",
+      "href": "/services/vip-strategy-day/",
+      "included": [
+        "Pre-day questionnaire and audit of your current systems",
+        "4-hour virtual intensive (with breaks)",
+        "Workflow mapping for your top 3 processes",
+        "90-day action plan with prioritized next steps",
+        "Recording of our session",
+        "14 days of follow-up support via email"
+      ],
+      "process": [
+        {
+          "phase": "Before Your Day",
+          "description": "You'll complete a detailed questionnaire about your current systems, pain points, and goals. I'll review your responses and do preliminary research before we meet."
+        },
+        {
+          "phase": "During Your Day",
+          "description": "We spend 4 focused hours (with breaks) mapping your workflows, identifying bottlenecks, and designing solutions. This is collaborative—you know your business, I know systems."
+        },
+        {
+          "phase": "After Your Day",
+          "description": "Within 48 hours, you receive your 90-day action plan document, annotated workflow maps, and the session recording. You have 14 days of email support for follow-up questions."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is this virtual or in-person?",
+          "answer": "Virtual via Zoom. This allows us to share screens, record everything, and work efficiently."
+        },
+        {
+          "question": "What if I need more than 4 hours?",
+          "answer": "Most clients find 4 hours is enough for significant clarity. If we need more time, we can schedule a follow-up session at a reduced rate."
+        },
+        {
+          "question": "What if I want you to implement the plan afterward?",
+          "answer": "Many VIP Day clients move to Done-For-You Systems after. Your VIP Day investment can be credited toward a larger engagement within 60 days."
+        },
+        {
+          "question": "Can my team join?",
+          "answer": "Yes—up to 2 additional team members can join at no extra cost. This is especially useful if they'll be implementing the changes."
+        },
+        {
+          "question": "What do I need to prepare?",
+          "answer": "Complete the pre-day questionnaire honestly and thoroughly. Have access to your current tools (ClickUp, email, etc.) ready to share your screen."
+        }
+      ],
+      "ctaText": "Book Your VIP Day",
+      "ctaHref": "/contact/"
+    },
+    {
+      "id": "workflow-audit",
+      "icon": "📋",
+      "title": "Workflow Audit",
+      "shortDescription": "Expert eyes on your setup before you invest in bigger changes. Written report with specific recommendations.",
+      "fullDescription": "A focused review of your current systems with specific recommendations. Written audit report, priority action list, and a 30-minute walkthrough call.",
+      "bestFor": "Those who want expert feedback before committing to a larger investment.",
+      "priceRange": "$500",
+      "priceMin": 500,
+      "priceMax": 500,
+      "timeline": "1 week",
+      "href": "/services/workflow-audit/",
+      "included": [
+        "Review of your current tools and workflows",
+        "Written audit report with specific recommendations",
+        "30-minute call to walk through findings",
+        "Priority action list (what to fix first)"
+      ],
+      "process": [
+        {
+          "step": 1,
+          "description": "You complete a detailed questionnaire and share access to your current tools"
+        },
+        {
+          "step": 2,
+          "description": "I review everything and prepare your audit report (3-5 business days)"
+        },
+        {
+          "step": 3,
+          "description": "We have a 30-minute call to discuss findings and answer questions"
+        },
+        {
+          "step": 4,
+          "description": "You receive the final written report with prioritized recommendations"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What do you actually review?",
+          "answer": "Your project management setup (ClickUp, Trello, etc.), client communication workflows, booking/tracking processes, and any automations you have in place."
+        },
+        {
+          "question": "What if you find nothing wrong?",
+          "answer": "Then you'll have peace of mind and validation that your systems are solid. But honestly, I've never audited a system and found nothing to improve."
+        },
+        {
+          "question": "Can this lead to a larger engagement?",
+          "answer": "Yes—your audit investment can be credited toward VIP Strategy Day or Done-For-You Systems within 30 days."
+        },
+        {
+          "question": "How detailed is the report?",
+          "answer": "Typically 5-10 pages with specific observations, recommendations, and a prioritized action list. No fluff."
+        }
+      ],
+      "ctaText": "Get Your Audit",
+      "ctaHref": "/contact/"
+    }
+  ]
+}

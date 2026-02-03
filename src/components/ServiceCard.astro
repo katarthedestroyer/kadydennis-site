@@ -1,0 +1,41 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  price: string;
+  href: string;
+  bestFor?: string;
+  timeline?: string;
+}
+
+const { icon, title, description, price, href, bestFor, timeline } = Astro.props;
+---
+
+<article class="service-card group">
+  <div class="service-card-icon">{icon}</div>
+
+  <h3 class="service-card-title group-hover:text-brand-600 transition-colors">{title}</h3>
+
+  <p class="service-card-description">{description}</p>
+
+  <div class="service-card-price">{price}</div>
+
+  {bestFor && (
+    <p class="text-sm text-gray-500 mb-4">
+      <span class="font-medium">Best for:</span> {bestFor}
+    </p>
+  )}
+
+  {timeline && (
+    <p class="text-sm text-gray-500 mb-4">
+      <span class="font-medium">Timeline:</span> {timeline}
+    </p>
+  )}
+
+  <div class="service-card-footer">
+    <a href={href} class="btn btn-secondary w-full">
+      Learn More
+    </a>
+  </div>
+</article>

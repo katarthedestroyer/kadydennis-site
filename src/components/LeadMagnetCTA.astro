@@ -1,0 +1,78 @@
+---
+interface Props {
+  variant?: 'inline' | 'banner' | 'card';
+  title?: string;
+  description?: string;
+}
+
+const {
+  variant = 'card',
+  title = "Free: The 5 Workflows Every Travel Agent Should Automate",
+  description = "Stop reinventing the wheel. Learn which tasks to automate first—and how to do it without expensive software or a tech team."
+} = Astro.props;
+---
+
+{variant === 'banner' && (
+  <section class="lead-magnet">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h2 class="text-xl md:text-2xl font-bold mb-2">{title}</h2>
+        <p class="text-white/90">{description}</p>
+      </div>
+      <form class="flex flex-col sm:flex-row gap-3 w-full md:w-auto" action="#" method="POST">
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email address"
+          required
+          class="input bg-white/10 border-white/30 text-white placeholder-white/70 focus:bg-white/20"
+        />
+        <button type="submit" class="btn bg-white text-brand-700 hover:bg-gray-100 whitespace-nowrap">
+          Get the Guide
+        </button>
+      </form>
+    </div>
+  </section>
+)}
+
+{variant === 'card' && (
+  <section class="bg-gray-50 rounded-2xl p-8 md:p-12">
+    <div class="max-w-2xl mx-auto text-center">
+      <span class="badge badge-brand mb-4">Free Resource</span>
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{title}</h2>
+      <p class="text-gray-600 mb-8">{description}</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="#" method="POST">
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email address"
+          required
+          class="input flex-grow"
+        />
+        <button type="submit" class="btn btn-primary whitespace-nowrap">
+          Send Me the Guide
+        </button>
+      </form>
+      <p class="text-sm text-gray-500 mt-4">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
+)}
+
+{variant === 'inline' && (
+  <div class="bg-brand-50 rounded-xl p-6 border border-brand-100">
+    <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
+    <p class="text-gray-600 text-sm mb-4">{description}</p>
+    <form class="flex flex-col sm:flex-row gap-3" action="#" method="POST">
+      <input
+        type="email"
+        name="email"
+        placeholder="Your email"
+        required
+        class="input text-sm flex-grow"
+      />
+      <button type="submit" class="btn btn-primary btn-sm whitespace-nowrap">
+        Get Free Guide
+      </button>
+    </form>
+  </div>
+)}

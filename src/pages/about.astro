@@ -1,0 +1,115 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import { pagesSEO, defaultSiteConfig } from '../utils/seo';
+import { getPersonSchema, getFAQPageSchema, type BreadcrumbItem } from '../utils/schema';
+
+import aboutFaqs from '../data/about-faqs.json';
+
+const seo = pagesSEO.about;
+const faqs = aboutFaqs.aboutFaqs;
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'About', url: `${defaultSiteConfig.siteUrl}/about/` }
+];
+
+const personSchema = getPersonSchema();
+const faqSchema = getFAQPageSchema(faqs);
+---
+
+<PageLayout
+  title={seo.title!}
+  description={seo.description!}
+  breadcrumbs={breadcrumbs}
+  additionalSchemas={[personSchema, faqSchema]}
+>
+  <article class="section">
+    <div class="container-site max-w-3xl">
+      <!-- Hero -->
+      <header class="mb-12">
+        <h1 class="mb-6">About Kady</h1>
+        <p class="text-xl text-gray-600">
+          I build systems so you don't have to think about them.
+        </p>
+      </header>
+
+      <!-- Story -->
+      <section class="prose-custom mb-12">
+        <p>
+          Before I became an operations consultant, I spent years as a travel coordinator at a busy agency. I booked trips, managed suppliers, tracked commissions, and—like everyone else—built my own hodgepodge of spreadsheets and workarounds to keep it all together.
+        </p>
+        <p>
+          The thing is: I actually liked the systems part. While other advisors dreaded updating their tracking sheets, I was figuring out how to make mine update automatically. While they forgot follow-ups, I was building sequences that sent themselves.
+        </p>
+        <p>
+          Eventually I realized the systems I was building were more valuable than any individual trip I could book. Other advisors started asking me to build similar systems for them. Then agency owners. Then small businesses outside travel who had the same problems.
+        </p>
+        <p>
+          So I made it official. Now I help travel advisors and small service businesses stop drowning in operations and start scaling—with systems that actually work.
+        </p>
+      </section>
+
+      <!-- Approach -->
+      <section class="mb-12">
+        <h2 class="mb-6">My Approach</h2>
+        <div class="prose-custom">
+          <p>
+            I believe in systems that are <strong>simple enough to actually use</strong>. The best workflow is one you'll follow consistently—not a complex masterpiece that looks impressive but never gets updated.
+          </p>
+          <p>
+            I primarily work with <strong>ClickUp</strong> for project management because it's powerful enough for complex workflows but intuitive enough that you won't need a PhD to use it. For AI-powered automation, I use <strong>Claude</strong> and custom integrations that actually make sense for your business.
+          </p>
+          <p>
+            My clients are typically:
+          </p>
+          <ul>
+            <li><strong>Travel advisors</strong> booking $300K+ annually who need to get off the hamster wheel</li>
+            <li><strong>Small agencies</strong> (2-10 people) struggling to scale without chaos</li>
+            <li><strong>Service businesses</strong> with client-heavy workflows who need better systems</li>
+          </ul>
+          <p>
+            I don't do cookie-cutter solutions. Every system is built for how <em>your</em> business actually works—not how some template assumes it should work.
+          </p>
+        </div>
+      </section>
+
+      <!-- Short Version -->
+      <section class="bg-gray-50 rounded-2xl p-8 mb-12">
+        <h2 class="mb-6">The Short Version</h2>
+        <ul class="space-y-4 text-lg">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Former travel coordinator who built systems because nobody else would</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>ClickUp certified, AI automation specialist, process design nerd</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Helped 50+ travel professionals get their operations under control</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- FAQ -->
+      <FAQSection faqs={faqs} />
+
+      <!-- CTA -->
+      <CTASection
+        headline="Ready to Fix Your Operations?"
+        subheadline="Let's talk about what's not working and how to make it better."
+        buttonText="Let's Talk"
+        buttonHref="/contact/"
+      />
+    </div>
+  </article>
+</PageLayout>

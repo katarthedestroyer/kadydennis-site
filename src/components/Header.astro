@@ -1,0 +1,40 @@
+---
+import Navigation from './Navigation.astro';
+import navigation from '../data/navigation.json';
+---
+
+<header class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-40">
+  <div class="container-site">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="text-xl md:text-2xl font-bold text-gray-900 hover:text-brand-600 transition-colors">
+        Kady Dennis
+      </a>
+
+      <!-- Desktop Navigation -->
+      <Navigation />
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href={navigation.cta.secondary.href} class="nav-link">
+          {navigation.cta.secondary.label}
+        </a>
+        <a href={navigation.cta.primary.href} class="btn btn-primary btn-sm">
+          {navigation.cta.primary.label}
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="open-mobile-nav"
+        class="md:hidden p-2 -mr-2"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
