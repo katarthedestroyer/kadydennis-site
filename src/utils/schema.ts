@@ -20,7 +20,7 @@ export const defaultConfig: SchemaConfig = {
   logoUrl: 'https://kadydennis.com/images/logo.png',
   socialLinks: [
     'https://linkedin.com/in/kadydennis',
-    'https://facebook.com/groups/travelagentworkflows'
+    'https://www.facebook.com/groups/traveladvisoropscommunity'
   ]
 };
 

@@ -2,8 +2,8 @@
 title: "The 5 Workflows Every Travel Agent Should Automate"
 description: "Stop reinventing the wheel. This guide shows you exactly which tasks to automate first—and how to do it without expensive software or a tech team."
 author: "Kady Dennis"
-datePublished: "2024-01-15"
-dateModified: "2024-01-15"
+datePublished: "2026-01-15"
+dateModified: "2026-01-15"
 slug: "5-workflows-travel-agents"
 featured: true
 downloadUrl: "#email-gate"
