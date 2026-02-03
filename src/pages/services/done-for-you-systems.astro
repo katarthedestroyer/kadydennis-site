@@ -15,56 +15,56 @@ const service = servicesData.services.find(s => s.id === 'done-for-you-systems')
   ctaHref={service.ctaHref}
 >
   <!-- Hero with Direct Answer (50-70 words) -->
-  <header class="mb-12">
-    <span class="badge badge-brand mb-4">{service.priceRange}</span>
+  <header class="mb-12 scroll-animate">
+    <span class="badge badge-accent mb-4">{service.priceRange}</span>
     <h1 class="mb-4">{service.title}</h1>
-    <p class="text-xl text-gray-600">
+    <p class="text-xl text-gray-300">
       Done-For-You Systems is a complete operations build for travel agencies and service businesses. I design and implement your entire workflow infrastructure—ClickUp workspace, automated client communication, booking tracking, and commission management—delivered turnkey in 4-6 weeks. You get a system that runs while you sleep, without learning the tech yourself.
     </p>
   </header>
 
   <!-- What's Included -->
-  <section class="mb-12">
+  <section class="mb-12 scroll-animate">
     <h2 class="mb-6">What's Included</h2>
     <ul class="space-y-4">
       {service.included.map((item) => (
         <li class="flex items-start gap-3">
-          <svg class="w-6 h-6 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-accent-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
           </svg>
-          <span class="text-gray-700">{item}</span>
+          <span class="text-gray-300">{item}</span>
         </li>
       ))}
     </ul>
   </section>
 
   <!-- Who This Is For -->
-  <section class="mb-12 bg-gray-50 rounded-2xl p-8">
-    <h2 class="mb-4">Who This Is For</h2>
-    <p class="text-gray-700 mb-4">
+  <section class="mb-12 glass-card rounded-2xl p-8 scroll-animate">
+    <h2 class="mb-4 text-white">Who This Is For</h2>
+    <p class="text-gray-300 mb-4">
       This service is designed for travel advisors and small agencies who:
     </p>
-    <ul class="space-y-3 text-gray-700">
+    <ul class="space-y-3 text-gray-300">
       <li class="flex items-start gap-3">
-        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-accent-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <span>Are booking $500K+ annually and ready to stop doing everything manually</span>
       </li>
       <li class="flex items-start gap-3">
-        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-accent-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <span>Know they need better systems but don't have time to build them</span>
       </li>
       <li class="flex items-start gap-3">
-        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-accent-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <span>Want it done right the first time by someone who understands travel operations</span>
       </li>
       <li class="flex items-start gap-3">
-        <svg class="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-accent-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <span>Are ready to invest in infrastructure that will pay for itself in time saved</span>
@@ -73,20 +73,20 @@ const service = servicesData.services.find(s => s.id === 'done-for-you-systems')
   </section>
 
   <!-- Process/Timeline -->
-  <section class="mb-12">
+  <section class="mb-12 scroll-animate">
     <h2 class="mb-8">How It Works</h2>
     <div class="space-y-8">
       {service.process.map((phase, index) => (
         <div class="flex gap-6">
           <div class="flex-shrink-0">
-            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold">
+            <div class="w-12 h-12 rounded-full bg-accent-500/20 text-accent-400 flex items-center justify-center font-bold">
               {index + 1}
             </div>
           </div>
           <div>
-            <div class="text-sm text-brand-600 font-medium mb-1">Week {phase.week}</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">{phase.title}</h3>
-            <p class="text-gray-600">{phase.description}</p>
+            <div class="text-sm text-accent-400 font-medium mb-1">Week {phase.week}</div>
+            <h3 class="text-xl font-bold text-white mb-2">{phase.title}</h3>
+            <p class="text-gray-400">{phase.description}</p>
           </div>
         </div>
       ))}
@@ -94,16 +94,16 @@ const service = servicesData.services.find(s => s.id === 'done-for-you-systems')
   </section>
 
   <!-- Investment -->
-  <section class="mb-12">
+  <section class="mb-12 scroll-animate">
     <h2 class="mb-6">Investment</h2>
-    <p class="text-gray-600 mb-6">
+    <p class="text-gray-300 mb-6">
       Pricing depends on the complexity of your operation and what you need built. Here's what to expect:
     </p>
     <div class="space-y-4">
       {service.pricingTiers.map((tier) => (
-        <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
-          <span class="text-gray-700">{tier.tier}</span>
-          <span class="font-bold text-gray-900">{tier.price}</span>
+        <div class="flex justify-between items-center p-4 glass-card rounded-lg">
+          <span class="text-gray-300">{tier.tier}</span>
+          <span class="font-bold text-white">{tier.price}</span>
         </div>
       ))}
     </div>

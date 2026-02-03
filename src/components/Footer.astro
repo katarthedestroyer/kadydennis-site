@@ -5,13 +5,13 @@ import NewsletterForm from './NewsletterForm.astro';
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-50 border-t border-gray-100">
+<footer class="relative z-10 border-t border-white/5 mt-24">
   <!-- Newsletter Section -->
-  <div class="border-b border-gray-200">
+  <div class="border-b border-white/5">
     <div class="container-site py-12">
       <div class="max-w-2xl mx-auto text-center">
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">Get AI Ops Tips Weekly</h3>
-        <p class="text-gray-600 mb-6">Join travel advisors getting actionable automation tips every week. No spam, just systems that save time.</p>
+        <h3 class="text-2xl font-bold text-white mb-2">Get AI Ops Tips Weekly</h3>
+        <p class="text-gray-400 mb-6">Join travel advisors getting actionable automation tips every week. No spam, just systems that save time.</p>
         <div class="max-w-md mx-auto">
           <NewsletterForm
             variant="compact"
@@ -23,21 +23,27 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 
-  <div class="container-site section-sm">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-4 gap-12">
       <!-- Brand Column -->
-      <div class="col-span-2 md:col-span-1">
-        <a href="/" class="text-xl font-bold text-gray-900">Kady Dennis</a>
-        <p class="mt-4 text-gray-600 text-sm">
-          AI operations consulting for travel agencies and small businesses. Systems that run while you sleep.
-        </p>
+      <div>
+        <a href="/" class="flex items-center gap-3 mb-4">
+          <div class="relative w-10 h-10">
+            <div class="absolute inset-0 bg-gradient-to-br from-accent-400 to-violet-500 rounded-xl rotate-6"></div>
+            <div class="absolute inset-0 bg-dark-950 rounded-xl flex items-center justify-center">
+              <span class="text-xl font-bold text-gradient">K</span>
+            </div>
+          </div>
+          <span class="text-xl font-bold text-white">Kady Dennis</span>
+        </a>
+        <p class="text-gray-400 text-sm">AI Operations Consultant for travel agents and small teams.</p>
         <div class="flex gap-4 mt-6">
           {navigation.social.map((social) => (
             <a
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-gray-400 hover:text-brand-600 transition-colors"
+              class="text-gray-400 hover:text-accent-400 transition-colors"
               aria-label={social.platform}
             >
               {social.icon === 'linkedin' && (
@@ -72,11 +78,11 @@ const currentYear = new Date().getFullYear();
 
       <!-- Services -->
       <div>
-        <h3 class="font-semibold text-gray-900 mb-4">Services</h3>
-        <ul class="space-y-3">
+        <h4 class="text-white font-semibold mb-4">Services</h4>
+        <ul class="space-y-2">
           {navigation.footerNav.services.map((link) => (
             <li>
-              <a href={link.href} class="text-gray-600 hover:text-brand-600 transition-colors text-sm">
+              <a href={link.href} class="text-gray-400 hover:text-accent-400 text-sm transition-colors">
                 {link.label}
               </a>
             </li>
@@ -86,11 +92,11 @@ const currentYear = new Date().getFullYear();
 
       <!-- Resources -->
       <div>
-        <h3 class="font-semibold text-gray-900 mb-4">Resources</h3>
-        <ul class="space-y-3">
+        <h4 class="text-white font-semibold mb-4">Resources</h4>
+        <ul class="space-y-2">
           {navigation.footerNav.resources.map((link) => (
             <li>
-              <a href={link.href} class="text-gray-600 hover:text-brand-600 transition-colors text-sm">
+              <a href={link.href} class="text-gray-400 hover:text-accent-400 text-sm transition-colors">
                 {link.label}
               </a>
             </li>
@@ -100,32 +106,35 @@ const currentYear = new Date().getFullYear();
 
       <!-- Company -->
       <div>
-        <h3 class="font-semibold text-gray-900 mb-4">Company</h3>
-        <ul class="space-y-3">
+        <h4 class="text-white font-semibold mb-4">Company</h4>
+        <ul class="space-y-2">
           {navigation.footerNav.company.map((link) => (
             <li>
-              <a href={link.href} class="text-gray-600 hover:text-brand-600 transition-colors text-sm">
+              <a href={link.href} class="text-gray-400 hover:text-accent-400 text-sm transition-colors">
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
-        <p class="mt-6 text-sm text-gray-600">
-          <a href="mailto:hello@kadydennis.com" class="hover:text-brand-600 transition-colors">
+        <p class="mt-6 text-sm">
+          <a href="mailto:hello@kadydennis.com" class="text-gray-400 hover:text-accent-400 transition-colors">
             hello@kadydennis.com
           </a>
         </p>
       </div>
     </div>
 
+    <!-- Section Divider -->
+    <div class="section-divider my-8"></div>
+
     <!-- Bottom Bar -->
-    <div class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-sm text-gray-500">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 text-sm">
         &copy; {currentYear} Kady Dennis Consulting. All rights reserved.
       </p>
-      <div class="flex gap-6 text-sm text-gray-500">
-        <a href="/privacy/" class="hover:text-brand-600 transition-colors">Privacy Policy</a>
-        <a href="/terms/" class="hover:text-brand-600 transition-colors">Terms of Service</a>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="/privacy/" class="text-gray-500 hover:text-accent-400 transition-colors">Privacy Policy</a>
+        <a href="/terms/" class="text-gray-500 hover:text-accent-400 transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>

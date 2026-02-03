@@ -14,20 +14,20 @@ const breadcrumbs = items || generateBreadcrumbs(Astro.url.pathname);
 
 {breadcrumbs.length > 1 && (
   <nav aria-label="Breadcrumb" class="breadcrumbs">
-    <ol class="flex items-center space-x-2">
+    <ol class="flex items-center space-x-2 text-sm">
       {breadcrumbs.map((item, index) => (
         <li class="flex items-center">
           {index > 0 && (
-            <svg class="breadcrumb-separator w-4 h-4 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="breadcrumb-separator w-4 h-4 mx-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           )}
           {index < breadcrumbs.length - 1 ? (
-            <a href={item.url} class="breadcrumb-link hover:underline">
+            <a href={item.url} class="breadcrumb-link text-gray-400 hover:text-accent-400 transition-colors">
               {item.name}
             </a>
           ) : (
-            <span class="breadcrumb-current" aria-current="page">
+            <span class="breadcrumb-current text-gray-300" aria-current="page">
               {item.name}
             </span>
           )}

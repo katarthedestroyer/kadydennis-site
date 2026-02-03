@@ -28,16 +28,16 @@ const allResources = sortedResources;
 >
   <section class="section">
     <div class="container-site">
-      <header class="max-w-3xl mx-auto text-center mb-16">
+      <header class="max-w-3xl mx-auto text-center mb-16 scroll-animate">
         <h1 class="mb-4">Free Resources</h1>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-gray-300">
           Free guides and resources for travel agents looking to automate their operations and use AI effectively.
         </p>
       </header>
 
       <!-- Featured Resource -->
       {featuredResources.length > 0 && (
-        <div class="mb-16">
+        <div class="mb-16 scroll-animate">
           <LeadMagnetCTA
             variant="card"
             title={featuredResources[0].data.title}
@@ -47,18 +47,18 @@ const allResources = sortedResources;
       )}
 
       <!-- All Resources -->
-      <div>
+      <div class="scroll-animate">
         <h2 class="mb-8">All Guides</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
           {allResources.map((resource) => (
-            <article class="card group">
-              <span class="badge badge-brand mb-4">Free Guide</span>
-              <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">
+            <article class="glass-card group p-6 rounded-xl">
+              <span class="badge badge-accent mb-4">Free Guide</span>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent-400 transition-colors">
                 <a href={`/resources/${resource.data.slug}/`}>
                   {resource.data.title}
                 </a>
               </h3>
-              <p class="text-gray-600 text-sm mb-4">{resource.data.description}</p>
+              <p class="text-gray-400 text-sm mb-4">{resource.data.description}</p>
               <div class="flex items-center justify-between text-sm text-gray-500">
                 <span>By {resource.data.author}</span>
                 <time datetime={resource.data.datePublished}>
@@ -75,9 +75,9 @@ const allResources = sortedResources;
       </div>
 
       <!-- CTA to Templates -->
-      <div class="mt-16 text-center max-w-2xl mx-auto">
+      <div class="mt-16 text-center max-w-2xl mx-auto scroll-animate">
         <h2 class="mb-4">Ready for More?</h2>
-        <p class="text-gray-600 mb-6">
+        <p class="text-gray-300 mb-6">
           Check out my premium templates and tools, or explore services if you want hands-on help.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">

@@ -82,7 +82,7 @@ const schema = generatePageSchema(schemaOptions);
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,9 +131,53 @@ const schema = generatePageSchema(schemaOptions);
 
   <slot name="head" />
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col overflow-x-hidden">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <slot />
+  <!-- Aurora Background Effects -->
+  <div class="fixed inset-0 aurora-bg pointer-events-none" aria-hidden="true"></div>
+  <div class="fixed inset-0 mesh-gradient pointer-events-none opacity-50" aria-hidden="true"></div>
+
+  <!-- Floating Orbs -->
+  <div class="fixed top-1/4 -left-48 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-float pointer-events-none" aria-hidden="true"></div>
+  <div class="fixed bottom-1/4 -right-48 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-float-slow pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+    <slot />
+  </div>
+
+  <!-- Scroll Animation Observer -->
+  <script>
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
+
+      document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .stagger-children').forEach((el) => {
+        observer.observe(el);
+      });
+    } else {
+      // For reduced motion, make all elements visible immediately
+      document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .stagger-children').forEach((el) => {
+        el.classList.add('visible');
+      });
+    }
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      });
+    }
+  </script>
 </body>
 </html>

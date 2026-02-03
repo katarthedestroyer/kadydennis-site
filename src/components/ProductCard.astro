@@ -16,20 +16,20 @@ const linkHref = href || gumroadUrl || '#';
 const isExternal = gumroadUrl && !href;
 ---
 
-<article class:list={['card h-full flex flex-col', isFree && 'card-highlight']}>
+<article class:list={['glass-card h-full flex flex-col p-6', isFree && 'border-accent-500/30']}>
   {icon && <div class="text-4xl mb-4">{icon}</div>}
 
-  <h3 class="text-lg font-bold text-gray-900 mb-2">{title}</h3>
+  <h3 class="text-lg font-bold text-white mb-2">{title}</h3>
 
-  <p class="text-gray-600 text-sm mb-4 flex-grow">{description}</p>
+  <p class="text-gray-400 text-sm mb-4 flex-grow">{description}</p>
 
   <div class="mt-auto">
     <div class="flex items-center justify-between mb-4">
-      <span class:list={['font-bold', isFree ? 'text-brand-600 text-xl' : 'text-gray-900 text-lg']}>
+      <span class:list={['font-bold', isFree ? 'text-gradient text-xl' : 'text-white text-lg']}>
         {price}
       </span>
       {isFree && emailGated && (
-        <span class="badge badge-brand">Email Required</span>
+        <span class="badge badge-accent">Email Required</span>
       )}
     </div>
 

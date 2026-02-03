@@ -12,24 +12,24 @@ interface Props {
 const { icon, title, description, price, href, bestFor, timeline } = Astro.props;
 ---
 
-<article class="service-card group">
+<article class="glass-card service-card group">
   <div class="service-card-icon">{icon}</div>
 
-  <h3 class="service-card-title group-hover:text-brand-600 transition-colors">{title}</h3>
+  <h3 class="service-card-title group-hover:text-accent-400 transition-colors">{title}</h3>
 
   <p class="service-card-description">{description}</p>
 
   <div class="service-card-price">{price}</div>
 
   {bestFor && (
-    <p class="text-sm text-gray-500 mb-4">
-      <span class="font-medium">Best for:</span> {bestFor}
+    <p class="text-sm text-gray-400 mb-4">
+      <span class="font-medium text-gray-300">Best for:</span> {bestFor}
     </p>
   )}
 
   {timeline && (
-    <p class="text-sm text-gray-500 mb-4">
-      <span class="font-medium">Timeline:</span> {timeline}
+    <p class="text-sm text-gray-400 mb-4">
+      <span class="font-medium text-gray-300">Timeline:</span> {timeline}
     </p>
   )}
 

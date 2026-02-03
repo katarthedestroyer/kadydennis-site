@@ -1,40 +1,163 @@
 ---
-import Navigation from './Navigation.astro';
 import navigation from '../data/navigation.json';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
 ---
 
-<header class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-40">
-  <div class="container-site">
-    <div class="flex items-center justify-between h-16 md:h-20">
+<header class="navbar py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="text-xl md:text-2xl font-bold text-gray-900 hover:text-brand-600 transition-colors">
-        Kady Dennis
+      <a href="/" class="group flex items-center gap-3">
+        <div class="relative w-10 h-10">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-400 to-violet-500 rounded-xl rotate-6 group-hover:rotate-12 transition-transform duration-300"></div>
+          <div class="absolute inset-0 bg-dark-950 rounded-xl flex items-center justify-center">
+            <span class="text-xl font-bold text-gradient">K</span>
+          </div>
+        </div>
+        <span class="text-xl font-bold text-white hidden sm:block">Kady Dennis</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <Navigation />
+      <div class="hidden md:flex items-center gap-8">
+        {navigation.mainNav.map((item) => (
+          <div class="relative group">
+            <a
+              href={item.href}
+              class:list={[
+                'nav-link text-sm font-medium',
+                isActive(item.href) && 'text-white after:scale-x-100'
+              ]}
+            >
+              {item.label}
+              {item.children && (
+                <svg class="inline-block w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              )}
+            </a>
+
+            {item.children && (
+              <div class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="glass-card py-2 min-w-[220px]">
+                  {item.children.map((child) => (
+                    <a
+                      href={child.href}
+                      class="block px-4 py-3 text-gray-300 hover:text-accent-400 hover:bg-white/5 transition-colors"
+                    >
+                      <span class="font-medium">{child.label}</span>
+                      {child.description && (
+                        <span class="block text-sm text-gray-500 mt-0.5">{child.description}</span>
+                      )}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
 
       <!-- Desktop CTA -->
-      <div class="hidden md:flex items-center gap-4">
-        <a href={navigation.cta.secondary.href} class="nav-link">
-          {navigation.cta.secondary.label}
-        </a>
-        <a href={navigation.cta.primary.href} class="btn btn-primary btn-sm">
-          {navigation.cta.primary.label}
+      <div class="hidden md:block">
+        <a href={navigation.cta.primary.href} class="btn-primary text-sm py-3 px-6">
+          <span>{navigation.cta.primary.label}</span>
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
       <button
-        id="open-mobile-nav"
-        class="md:hidden p-2 -mr-2"
-        aria-label="Open menu"
-        aria-expanded="false"
+        type="button"
+        class="md:hidden relative w-10 h-10 flex items-center justify-center"
+        id="mobile-menu-button"
+        aria-label="Toggle menu"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+        <div class="space-y-1.5" id="hamburger">
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        </div>
       </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed inset-0 top-[72px] bg-dark-950/98 backdrop-blur-xl z-40 translate-x-full transition-transform duration-300"
+  >
+    <div class="flex flex-col p-6 space-y-2">
+      {navigation.mainNav.map((item) => (
+        <div>
+          <a
+            href={item.href}
+            class:list={[
+              'block text-2xl font-semibold py-4 border-b border-white/5',
+              isActive(item.href) ? 'text-accent-400' : 'text-white hover:text-accent-400'
+            ]}
+          >
+            {item.label}
+          </a>
+          {item.children && (
+            <div class="pl-4 space-y-1 py-2">
+              {item.children.map((child) => (
+                <a
+                  href={child.href}
+                  class="block py-2 text-gray-400 hover:text-accent-400 transition-colors"
+                >
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+      <div class="pt-6">
+        <a href={navigation.cta.primary.href} class="btn-primary w-full text-center">
+          <span>{navigation.cta.primary.label}</span>
+        </a>
+      </div>
     </div>
   </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('translate-x-0');
+    menu?.classList.toggle('translate-x-full', isOpen);
+    menu?.classList.toggle('translate-x-0', !isOpen);
+    hamburger?.classList.toggle('open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu?.classList.contains('translate-x-0')) {
+      menu?.classList.remove('translate-x-0');
+      menu?.classList.add('translate-x-full');
+      hamburger?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+
+<style>
+  #hamburger.open span:first-child {
+    transform: translateY(6px) rotate(45deg);
+  }
+  #hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  #hamburger.open span:last-child {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+</style>
