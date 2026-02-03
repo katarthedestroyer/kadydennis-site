@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 ---
 
-<div class={`newsletter-form ${variant} ${className}`} data-form-id={formId} data-tags={JSON.stringify(tags)}>
+<div class={`newsletter-signup-form ${variant} ${className}`} data-form-id={formId} data-tags={JSON.stringify(tags)}>
   {variant === 'card' && (
     <div class="bg-brand-50 rounded-xl p-8">
       <h3 class="text-xl font-bold text-gray-900 mb-2">{title}</h3>
@@ -100,7 +100,7 @@ const {
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const forms = document.querySelectorAll('.newsletter-form');
+    const forms = document.querySelectorAll('.newsletter-signup-form');
 
     forms.forEach((container) => {
       const form = container.querySelector('.newsletter-form-element') as HTMLFormElement;
@@ -164,7 +164,7 @@ const {
           }
         } finally {
           submitBtn.disabled = false;
-          submitBtn.textContent = form.closest('.newsletter-form')?.classList.contains('compact')
+          submitBtn.textContent = form.closest('.newsletter-signup-form')?.classList.contains('compact')
             ? 'Subscribe'
             : submitBtn.getAttribute('data-original-text') || 'Subscribe';
         }
