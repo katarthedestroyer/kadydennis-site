@@ -16,7 +16,7 @@ const { quote, author, company, result } = Astro.props;
 
   <p class="testimonial-quote mb-6">"{quote}"</p>
 
-  <footer class="flex items-center justify-between">
+  <footer class="flex items-center justify-between flex-wrap gap-4">
     <div>
       <cite class="testimonial-author not-italic">{author}</cite>
       {company && (
