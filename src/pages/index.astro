@@ -38,19 +38,22 @@ const additionalSchemas = [
       <div class="container-site">
         <div class="max-w-3xl mx-auto text-center scroll-animate">
           <h1 class="text-balance mb-6">
-            <span class="text-gradient">AI-Powered Systems</span> for Travel Agents & Small Teams
+            <span class="text-gradient">AI Operations Consultant</span> for Travel Advisors & Small Teams
           </h1>
           <p class="text-xl text-gray-300 mb-8 text-balance">
-            You didn't start your business to drown in spreadsheets, chase commission payments, or copy-paste the same emails over and over. I build operations systems that run while you sleep—so you can focus on clients, not admin.
+            You didn't start your business to drown in spreadsheets, chase commission payments, or copy-paste the same emails over and over. I help travel advisors and small teams build operations systems that run while you sleep—whether you want me to build it for you, guide you through it, or DIY with my templates.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/resources/5-workflows-travel-agents/" class="btn btn-primary btn-lg">
+            <a href="/shop/" class="btn btn-primary btn-lg">
               Get the Free Workflow Guide
             </a>
             <a href="/services/" class="btn btn-secondary btn-lg">
               See How I Can Help
             </a>
           </div>
+          <p class="limited-availability">
+            <span class="availability-dot"></span> Currently accepting 2 new consulting clients per month
+          </p>
         </div>
       </div>
     </section>
@@ -85,6 +88,12 @@ const additionalSchemas = [
               </svg>
               <span>You know you should automate but don't know where to start</span>
             </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-accent-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>You've bought templates or courses before but couldn't make them work for your business</span>
+            </li>
           </ul>
           <p class="text-lg text-gray-300 text-center">
             You're not bad at operations. You just don't have the <strong class="text-white">systems</strong> to make it easy.
@@ -105,11 +114,11 @@ const additionalSchemas = [
         <div class="text-center mb-12 scroll-animate">
           <h2 class="mb-4">Choose Your Path</h2>
           <p class="text-gray-400 max-w-2xl mx-auto">
-            Whether you want me to build everything for you or just need a push in the right direction, there's an option that fits.
+            From full-service consulting to DIY templates—find the right fit for where you are right now.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 stagger-children">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
           {services.map((service) => (
             <ServiceCard
               icon={service.icon}
@@ -160,10 +169,13 @@ const additionalSchemas = [
         <div class="max-w-3xl mx-auto text-center scroll-animate">
           <h2 class="mb-6">Hey, I'm Kady.</h2>
           <p class="text-lg text-gray-300 mb-6">
-            I spent years as a travel coordinator building systems that nobody else wanted to build. Booking workflows, commission tracking, client communication sequences—all the stuff that makes agencies actually run.
+            I spent years as a travel coordinator building the systems nobody else wanted to build—booking workflows, commission tracking, client communication sequences. The unglamorous stuff that makes agencies actually run.
+          </p>
+          <p class="text-lg text-gray-300 mb-6">
+            Eventually I realized these systems were more valuable than any trip I could book. Now I work with a handful of travel advisors and small service businesses each month, helping them stop drowning in operations and start scaling.
           </p>
           <p class="text-lg text-gray-300 mb-8">
-            Eventually I realized: these systems were more valuable than any single trip I could book. Now I build them for travel advisors and small service businesses who want to stop drowning in operations and start scaling.
+            Whether you want done-for-you implementation, strategic guidance, or proven templates to DIY—I've got you covered.
           </p>
           <a href="/about/" class="btn btn-ghost">
             More About Me →

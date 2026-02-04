@@ -957,6 +957,33 @@ a:hover {
 }
 
 /* ==========================================
+   LIMITED AVAILABILITY INDICATOR
+   ========================================== */
+
+.limited-availability {
+  font-size: 0.875rem;
+  color: var(--color-gray-400);
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.availability-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ==========================================
    PRINT STYLES
    ========================================== */
 

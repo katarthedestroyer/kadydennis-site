@@ -172,8 +172,8 @@ export function generateBreadcrumbs(
 // Page-specific SEO configurations
 export const pagesSEO: Record<string, Partial<SEOProps>> = {
   home: {
-    title: 'Kady Dennis | AI Operations Consultant for Travel Agents & Small Teams',
-    description: 'I build AI-powered operations systems for travel agencies and service businesses. Stop drowning in admin. Get systems that run while you sleep.',
+    title: 'Kady Dennis | AI Operations Consultant for Travel Advisors | Done-For-You & DIY Solutions',
+    description: 'AI operations consultant helping travel advisors and small teams automate their business. Choose from done-for-you systems, VIP strategy days, workflow audits, or DIY templates.',
     ogType: 'website'
   },
   about: {

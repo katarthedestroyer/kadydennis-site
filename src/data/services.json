@@ -200,6 +200,28 @@
       ],
       "ctaText": "Get Your Audit",
       "ctaHref": "/contact/"
+    },
+    {
+      "id": "diy-templates",
+      "icon": "📦",
+      "title": "DIY Templates & Tools",
+      "shortDescription": "Ready-to-use ClickUp templates, workflow guides, and AI prompt packs. Grab what you need and implement on your own schedule.",
+      "fullDescription": "Ready-to-use ClickUp templates, workflow guides, and AI prompt packs for travel advisors who want proven systems without the consulting price tag.",
+      "bestFor": "Self-starters who want proven systems without the consulting price tag.",
+      "priceRange": "$27 – $197",
+      "priceMin": 27,
+      "priceMax": 197,
+      "timeline": "Instant access",
+      "href": "/shop/",
+      "included": [
+        "ClickUp templates ready to import",
+        "Step-by-step workflow guides",
+        "AI prompt packs for travel advisors",
+        "Video walkthroughs included"
+      ],
+      "faqs": [],
+      "ctaText": "Browse Resources",
+      "ctaHref": "/shop/"
     }
   ]
 }
