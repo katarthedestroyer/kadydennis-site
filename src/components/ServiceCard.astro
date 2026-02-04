@@ -13,26 +13,39 @@ const { icon, title, description, price, href, bestFor, timeline } = Astro.props
 ---
 
 <article class="glass-card service-card group">
-  <div class="service-card-icon">{icon}</div>
+  <!-- Header Section: Icon + Title (fixed height) -->
+  <div class="service-card-header">
+    <div class="service-card-icon">{icon}</div>
+    <h3 class="service-card-title group-hover:text-accent-400 transition-colors">{title}</h3>
+  </div>
 
-  <h3 class="service-card-title group-hover:text-accent-400 transition-colors">{title}</h3>
+  <!-- Description Section (flex-grow to push rest down) -->
+  <div class="service-card-body">
+    <p class="service-card-description">{description}</p>
+  </div>
 
-  <p class="service-card-description">{description}</p>
+  <!-- Price Section (fixed position from bottom) -->
+  <div class="service-card-pricing">
+    <div class="service-card-price">{price}</div>
+  </div>
 
-  <div class="service-card-price">{price}</div>
+  <!-- Meta Section: Best For + Timeline (fixed height) -->
+  <div class="service-card-meta">
+    {bestFor && (
+      <p class="service-card-meta-item">
+        <span class="service-card-meta-label">Best for:</span>
+        <span class="service-card-meta-value">{bestFor}</span>
+      </p>
+    )}
+    {timeline && (
+      <p class="service-card-meta-item">
+        <span class="service-card-meta-label">Timeline:</span>
+        <span class="service-card-meta-value">{timeline}</span>
+      </p>
+    )}
+  </div>
 
-  {bestFor && (
-    <p class="text-sm text-gray-400 mb-4">
-      <span class="font-medium text-gray-300">Best for:</span> {bestFor}
-    </p>
-  )}
-
-  {timeline && (
-    <p class="text-sm text-gray-400 mb-4">
-      <span class="font-medium text-gray-300">Timeline:</span> {timeline}
-    </p>
-  )}
-
+  <!-- Footer Section: CTA Button (always at bottom) -->
   <div class="service-card-footer">
     <a href={href} class="btn btn-secondary w-full">
       Learn More

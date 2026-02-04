@@ -694,45 +694,84 @@ a:hover {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 2rem;
-  transition: all 0.5s ease;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .service-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border-color: var(--color-accent-500);
 }
 
-.service-card-icon {
-  font-size: 2.25rem;
+/* Header section - icon and title */
+.service-card-header {
   margin-bottom: 1rem;
 }
 
+.service-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
 .service-card-title {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: white;
-  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+/* Body section - description (grows to fill space) */
+.service-card-body {
+  flex: 1;
+  margin-bottom: 1rem;
 }
 
 .service-card-description {
   color: var(--color-gray-400);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Pricing section */
+.service-card-pricing {
   margin-bottom: 1rem;
-  flex-grow: 1;
 }
 
 .service-card-price {
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 700;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(135deg, var(--color-accent-400), var(--color-violet-400));
-  margin-bottom: 1rem;
 }
 
+/* Meta section - Best for + Timeline */
+.service-card-meta {
+  margin-bottom: 1rem;
+  min-height: 4.5rem; /* Fixed minimum height for alignment */
+}
+
+.service-card-meta-item {
+  font-size: 0.8rem;
+  margin-bottom: 0.375rem;
+  line-height: 1.4;
+}
+
+.service-card-meta-label {
+  font-weight: 600;
+  color: var(--color-gray-300);
+}
+
+.service-card-meta-value {
+  color: var(--color-gray-400);
+  margin-left: 0.25rem;
+}
+
+/* Footer section - CTA button */
 .service-card-footer {
   margin-top: auto;
   padding-top: 1rem;
