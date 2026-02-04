@@ -18,6 +18,11 @@
           "label": "Workflow Audit",
           "href": "/services/workflow-audit/",
           "description": "Operations review"
+        },
+        {
+          "label": "DIY Templates & Tools",
+          "href": "/shop/",
+          "description": "$27 – $197"
         }
       ]
     },
@@ -55,6 +60,10 @@
       {
         "label": "Workflow Audit",
         "href": "/services/workflow-audit/"
+      },
+      {
+        "label": "DIY Templates & Tools",
+        "href": "/shop/"
       }
     ],
     "resources": [
@@ -112,7 +121,7 @@
   "cta": {
     "primary": {
       "label": "Book a Call",
-      "href": "/contact/"
+      "href": "/book/"
     },
     "secondary": {
       "label": "Get Free Guide",

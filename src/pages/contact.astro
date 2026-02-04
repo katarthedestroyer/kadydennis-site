@@ -17,111 +17,66 @@ const breadcrumbs: BreadcrumbItem[] = [
   breadcrumbs={breadcrumbs}
 >
   <section class="section">
-    <div class="container-site max-w-5xl">
+    <div class="container-site max-w-3xl">
       <header class="text-center mb-12 scroll-animate">
-        <h1 class="mb-4">Let's Talk</h1>
+        <h1 class="mb-4">Get in Touch</h1>
         <p class="text-xl text-gray-300">
-          Ready to fix your operations? Book a free discovery call or send a message. I respond within 24 hours.
+          Have a question or want to discuss your operations? I'd love to hear from you.
         </p>
       </header>
 
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Cal.com Inline Embed -->
-        <div class="scroll-animate">
-          <h2 class="mb-4">Book a Discovery Call</h2>
-          <p class="text-gray-300 mb-6">
-            15 minutes to discuss your situation and see if we're a good fit. No pitch—just honest advice about whether my services make sense for you.
-          </p>
-
-          <!-- Cal.com Inline Embed -->
-          <div class="glass-card rounded-xl overflow-hidden" style="min-height: 500px;">
-            <div
-              id="cal-inline-embed"
-              style="width:100%;height:100%;min-height:500px;overflow:auto;"
-            ></div>
+      <!-- Quick Actions -->
+      <div class="grid sm:grid-cols-2 gap-6 mb-12 scroll-animate">
+        <a href="/book/" class="glass-card p-6 text-center hover:border-accent-500 transition-colors group">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-accent-500/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
           </div>
+          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-accent-400 transition-colors">Book a Discovery Call</h3>
+          <p class="text-gray-400 text-sm">Free 15-minute call to discuss your situation</p>
+        </a>
 
-          <!-- Cal.com inline embed script -->
-          <script is:inline type="text/javascript">
-            (function (C, A, L) {
-              let p = function (a, ar) { a.q.push(ar); };
-              let d = C.document;
-              C.Cal = C.Cal || function () {
-                let cal = C.Cal;
-                let ar = arguments;
-                if (!cal.loaded) {
-                  cal.ns = {};
-                  cal.q = cal.q || [];
-                  d.head.appendChild(d.createElement("script")).src = A;
-                  cal.loaded = true;
-                }
-                if (ar[0] === L) {
-                  const api = function () { p(api, arguments); };
-                  const namespace = ar[1];
-                  api.q = api.q || [];
-                  if(typeof namespace === "string"){
-                    cal.ns[namespace] = cal.ns[namespace] || api;
-                    p(cal.ns[namespace], ar);
-                    p(cal, ["initNamespace", namespace]);
-                  } else p(cal, ar);
-                  return;
-                }
-                p(cal, ar);
-              };
-            })(window, "https://app.cal.com/embed/embed.js", "init");
+        <a href="mailto:hello@kadydennis.com" class="glass-card p-6 text-center hover:border-accent-500 transition-colors group">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-violet-500/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-violet-400 transition-colors">Email Directly</h3>
+          <p class="text-gray-400 text-sm">hello@kadydennis.com</p>
+        </a>
+      </div>
 
-            Cal("init", "discovery-call", {origin:"https://app.cal.com"});
-
-            Cal.ns["discovery-call"]("inline", {
-              elementOrSelector: "#cal-inline-embed",
-              calLink: "kady-dennis/discovery-call",
-              layout: "month_view",
-              config: {
-                theme: "dark"
-              }
-            });
-
-            Cal.ns["discovery-call"]("ui", {
-              theme: "dark",
-              styles: {
-                branding: { brandColor: "#06b6d4" }
-              },
-              hideEventTypeDetails: false,
-              layout: "month_view"
-            });
-          </script>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="scroll-animate">
-          <h2 class="mb-4">Send a Message</h2>
-          <p class="text-gray-300 mb-6">
-            Questions? Not sure which service is right? Just want to say hi? Drop me a note.
-          </p>
-
+      <!-- Contact Form -->
+      <div class="scroll-animate">
+        <div class="glass-card p-8">
+          <h2 class="text-xl font-semibold text-white mb-6">Send a Message</h2>
           <form id="contact-form" class="space-y-6">
-            <div class="input-group">
-              <label for="name" class="label">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                class="input"
-                placeholder="Your name"
-              />
-            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="input-group">
+                <label for="name" class="label">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="input"
+                  placeholder="Your name"
+                />
+              </div>
 
-            <div class="input-group">
-              <label for="email" class="label">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                class="input"
-                placeholder="your@email.com"
-              />
+              <div class="input-group">
+                <label for="email" class="label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="input"
+                  placeholder="your@email.com"
+                />
+              </div>
             </div>
 
             <div class="input-group">
@@ -131,7 +86,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <option value="Done-For-You Systems">Done-For-You Systems</option>
                 <option value="VIP Strategy Day">VIP Strategy Day</option>
                 <option value="Workflow Audit">Workflow Audit</option>
-                <option value="Templates & Resources">Templates & Resources</option>
+                <option value="DIY Templates & Tools">DIY Templates & Tools</option>
                 <option value="Other">Something else</option>
               </select>
             </div>
@@ -157,21 +112,10 @@ const breadcrumbs: BreadcrumbItem[] = [
         </div>
       </div>
 
-      <!-- Alternative Contact -->
-      <div class="mt-16 text-center scroll-animate">
-        <h2 class="mb-4">Prefer Email?</h2>
-        <p class="text-gray-300 mb-4">
-          You can reach me directly at:
-        </p>
-        <a
-          href="mailto:hello@kadydennis.com"
-          class="text-2xl font-medium text-accent-400 hover:text-accent-300"
-        >
-          hello@kadydennis.com
-        </a>
-
-        <!-- Social Links -->
-        <div class="mt-8 flex justify-center gap-6">
+      <!-- Social Links -->
+      <div class="mt-12 text-center scroll-animate">
+        <p class="text-gray-400 mb-6">Connect with me on social media</p>
+        <div class="flex justify-center gap-6">
           <a
             href="https://www.linkedin.com/in/kadydennis/"
             target="_blank"

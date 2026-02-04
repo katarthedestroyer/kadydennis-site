@@ -1,0 +1,102 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { defaultSiteConfig } from '../utils/seo';
+import type { BreadcrumbItem } from '../utils/schema';
+
+const seo = {
+  title: 'Book a Discovery Call | Kady Dennis',
+  description: 'Schedule a free 15-minute discovery call with Kady Dennis to discuss your operations challenges and see if we\'re a good fit.'
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Book a Call', url: `${defaultSiteConfig.siteUrl}/book/` }
+];
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section pt-8">
+    <div class="container-site max-w-4xl">
+      <header class="text-center mb-8 scroll-animate">
+        <h1 class="mb-4">Book a Discovery Call</h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          15 minutes to discuss your situation and see if we're a good fit. No pitch—just honest advice about whether my services make sense for you.
+        </p>
+      </header>
+
+      <!-- Cal.com Inline Embed -->
+      <div class="scroll-animate">
+        <div class="glass-card rounded-xl overflow-hidden p-4" style="min-height: 650px;">
+          <div
+            id="cal-inline-embed"
+            style="width:100%;height:100%;min-height:620px;overflow:auto;"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Cal.com inline embed script -->
+      <script is:inline type="text/javascript">
+        (function (C, A, L) {
+          let p = function (a, ar) { a.q.push(ar); };
+          let d = C.document;
+          C.Cal = C.Cal || function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () { p(api, arguments); };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if(typeof namespace === "string"){
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+
+        Cal("init", "discovery-call", {origin:"https://app.cal.com"});
+
+        Cal.ns["discovery-call"]("inline", {
+          elementOrSelector: "#cal-inline-embed",
+          calLink: "kady-dennis/discovery-call",
+          layout: "month_view",
+          config: {
+            theme: "dark"
+          }
+        });
+
+        Cal.ns["discovery-call"]("ui", {
+          theme: "dark",
+          styles: {
+            branding: { brandColor: "#06b6d4" }
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view"
+        });
+      </script>
+
+      <!-- Alternative -->
+      <div class="mt-12 text-center scroll-animate">
+        <p class="text-gray-400 mb-4">
+          Prefer to send a message instead?
+        </p>
+        <a href="/contact/" class="btn btn-ghost">
+          Contact Me →
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

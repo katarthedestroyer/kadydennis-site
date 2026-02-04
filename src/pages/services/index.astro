@@ -25,11 +25,11 @@ const breadcrumbs: BreadcrumbItem[] = [
       <header class="max-w-3xl mx-auto text-center mb-16 scroll-animate">
         <h1 class="mb-4">Services</h1>
         <p class="text-xl text-gray-300">
-          Systems that run while you sleep. Choose how you want to work together—from a quick audit to a complete operations build.
+          From full-service consulting to DIY templates—find the right fit for where you are right now.
         </p>
       </header>
 
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto scroll-animate stagger-children">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto scroll-animate stagger-children">
         {services.map((service) => (
           <ServiceCard
             icon={service.icon}
@@ -46,7 +46,7 @@ const breadcrumbs: BreadcrumbItem[] = [
       <!-- Comparison Note -->
       <div class="mt-16 max-w-2xl mx-auto text-center scroll-animate">
         <p class="text-gray-300">
-          Not sure which option is right for you? <a href="/contact/" class="text-accent-400 hover:text-accent-300 font-medium">Book a free 15-minute call</a> and I'll help you figure it out—no sales pitch, just honest advice.
+          Not sure which option is right for you? <a href="/book/" class="text-accent-400 hover:text-accent-300 font-medium">Book a free 15-minute call</a> and I'll help you figure it out—no sales pitch, just honest advice.
         </p>
       </div>
     </div>
