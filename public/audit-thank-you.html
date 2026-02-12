@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Readiness Audit — Received</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card: #0f1623;
+      --text: #e9eef8;
+      --muted: #a0b1cc;
+      --line: rgba(255, 255, 255, .08);
+      --accent: #7dd3fc;
+      --accent2: #c084fc;
+      --ok: #34d399;
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      font-family: var(--font);
+      background:
+        radial-gradient(ellipse 1100px 700px at 18% -5%, rgba(125, 211, 252, .12), transparent),
+        radial-gradient(ellipse 1000px 700px at 90% 10%, rgba(192, 132, 252, .10), transparent),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── entrance ── */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .wrap {
+      width: min(840px, 100%);
+      animation: rise .5s ease-out both;
+    }
+
+    /* ── card shell ── */
+    .card {
+      background: linear-gradient(170deg, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, .015) 100%);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, .04) inset,
+        0 32px 72px -16px rgba(0, 0, 0, .55);
+      overflow: hidden;
+    }
+
+    /* ── header band ── */
+    .top {
+      padding: 32px 32px 24px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(100deg, rgba(125, 211, 252, .07), rgba(192, 132, 252, .06));
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 10px;
+      border: 1px solid rgba(52, 211, 153, .20);
+      background: rgba(52, 211, 153, .06);
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: var(--ok);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, .15);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(52, 211, 153, .15); }
+      50%      { box-shadow: 0 0 0 6px rgba(52, 211, 153, .06); }
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      font-size: clamp(22px, 3.2vw, 28px);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -.3px;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.65;
+      max-width: 64ch;
+    }
+
+    /* ── body ── */
+    .body {
+      padding: 24px 32px 32px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+    }
+
+    /* ── panels ── */
+    .panel {
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, .20);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .panel h2 {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .panel p {
+      color: rgba(169, 183, 209, .9);
+      font-size: 13.5px;
+      line-height: 1.75;
+    }
+
+    .strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 16px 0;
+    }
+
+    /* ── buttons ── */
+    .ctaRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .04);
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s, border-color .2s, color .2s, transform .12s;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, .07);
+      border-color: rgba(255, 255, 255, .22);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .btnPrimary {
+      background: linear-gradient(135deg, rgba(125, 211, 252, .14), rgba(192, 132, 252, .12));
+      border-color: rgba(255, 255, 255, .16);
+      color: var(--text);
+    }
+
+    .btnPrimary:hover {
+      background: linear-gradient(135deg, rgba(125, 211, 252, .22), rgba(192, 132, 252, .18));
+      border-color: rgba(255, 255, 255, .28);
+    }
+
+    /* ── footer bits ── */
+    .fineprint {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(169, 183, 209, .6);
+    }
+
+    .sig {
+      margin-top: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(233, 238, 248, .75);
+    }
+
+    .sig strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── mobile ── */
+    @media (max-width: 720px) {
+      body { padding: 20px 12px; }
+      .top { padding: 24px 20px 20px; }
+      .body { padding: 20px; }
+      .grid { grid-template-columns: 1fr; }
+      .ctaRow { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+
+      <div class="top">
+        <div class="badge">
+          <span class="dot" aria-hidden="true"></span>
+          Intake received
+        </div>
+
+        <h1>AI Readiness Audit intake submitted</h1>
+
+        <p class="sub">
+          Thank you. I've received your submission and any uploaded materials.
+          Next step: I'll review everything asynchronously and deliver your Loom audit review
+          with a readiness scorecard and three priority fixes.
+        </p>
+      </div>
+
+      <div class="body">
+        <div class="grid">
+          <div class="panel">
+            <h2>What you will receive</h2>
+            <p>
+              <span class="strong">Loom audit review</span> (8-15 minutes)<br />
+              <span class="strong">Readiness scorecard</span> (clear strengths + constraints)<br />
+              <span class="strong">Three priority fixes</span> (ordered, practical, actionable)
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>How delivery works</h2>
+            <p>
+              There is <span class="strong">no call required</span> for the audit.<br />
+              You'll receive everything by email within your selected timeframe.<br />
+              If you later want implementation support, you can request that separately.
+            </p>
+          </div>
+
+          <div class="panel">
+            <h2>To keep things moving</h2>
+            <p>
+              If you uploaded files, you're all set.<br />
+              If not, reply to your confirmation email with 2-3 screenshots
+              of your current workflow or stack and I'll include them in the review.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Optional</h2>
+            <p>
+              Send a short Loom walkthrough (2-5 minutes) showing where work enters
+              your business and where it tends to break.
+              Not required, but it can make your recommendations sharper.
+            </p>
+          </div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="mailto:admin@eliavatravel.com?subject=AI%20Readiness%20Audit%20%E2%80%94%20Additional%20Context&body=Hi%20Kady%2C%0A%0AHere%E2%80%99s%20a%20bit%20more%20context%20for%20my%20audit%3A%0A%0A-%20Primary%20systems%20we%20use%3A%0A-%20Where%20things%20break%20most%20often%3A%0A-%20Top%20outcome%20I%20want%20in%2060%20days%3A%0A%0AThanks%2C%0A">
+            Send additional context
+          </a>
+          <a class="btn" href="mailto:admin@eliavatravel.com?subject=AI%20Readiness%20Audit%20%E2%80%94%20Link%20to%20files&body=Hi%20Kady%2C%0A%0AHere%E2%80%99s%20a%20link%20to%20my%20materials%20(view-only)%3A%0A%0A%0AThanks%2C%0A">
+            Add a link to files
+          </a>
+        </div>
+
+        <p class="fineprint">
+          Please do not include client-identifying information in any screenshots or files.
+          Redactions are completely fine.
+        </p>
+
+        <div class="sig">
+          <strong>Kady Dennis</strong><br />
+          AI Operations for Luxury Travel Agencies
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
