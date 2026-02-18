@@ -1,0 +1,63 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { defaultSiteConfig } from '../utils/seo';
+import type { BreadcrumbItem } from '../utils/schema';
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: defaultSiteConfig.siteUrl },
+  { name: 'Refund Policy', url: `${defaultSiteConfig.siteUrl}/refunds/` }
+];
+
+const lastUpdated = "February 14, 2026";
+---
+
+<PageLayout
+  title="Refund Policy"
+  description="Refund policy for Eliava Travel. Learn about our refund terms for consulting services and digital deliverables."
+  breadcrumbs={breadcrumbs}
+>
+  <article class="section">
+    <div class="container-site max-w-3xl">
+      <header class="mb-12">
+        <h1 class="mb-4">Refund Policy</h1>
+        <p class="text-gray-500">Effective Date: {lastUpdated}</p>
+      </header>
+
+      <div class="prose-custom">
+        <p>
+          This Refund Policy applies to purchases made through Eliava Travel and is designed to be consistent with our Service Agreements and scopes of work.
+        </p>
+
+        <h2>1. Services (Consulting)</h2>
+        <p>
+          Because consulting services involve reserved capacity and work performed to specification, refunds are handled as follows unless a signed agreement states otherwise:
+        </p>
+        <ul>
+          <li><strong>Before work begins:</strong> Any deposit or prepayment is refundable upon written request.</li>
+          <li><strong>After work begins:</strong> Deposits are non-refundable. We will provide any work completed to date and/or a summary of progress as applicable.</li>
+          <li><strong>Project payments:</strong> If milestone or final payments have been made and services have already been delivered, those payments are generally non-refundable.</li>
+        </ul>
+
+        <h2>2. Digital Deliverables (Templates, Documents, Configurations)</h2>
+        <p>
+          If a purchase includes downloadable digital materials, access is typically granted immediately. Due to the nature of digital goods, these purchases are non-refundable unless required by law.
+        </p>
+
+        <h2>3. Payment Processor Fees</h2>
+        <p>
+          If a refund is issued for a Stripe card payment, processing fees may not be recoverable from Stripe. Where permitted, refunds may be net of non-refundable processing fees.
+        </p>
+
+        <h2>4. Chargebacks</h2>
+        <p>
+          If you have a billing issue, please contact us at <a href="mailto:kady@eliavatravel.com">kady@eliavatravel.com</a> before initiating a chargeback so we can resolve it quickly. Unauthorized chargebacks may result in suspension of services and/or access.
+        </p>
+
+        <h2>5. Contact</h2>
+        <p>
+          Refund questions or requests: <a href="mailto:kady@eliavatravel.com">kady@eliavatravel.com</a>
+        </p>
+      </div>
+    </div>
+  </article>
+</PageLayout>
